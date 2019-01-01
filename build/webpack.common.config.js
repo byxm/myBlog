@@ -18,7 +18,7 @@ const isDev = evn === EVN.dev;
 
 module.exports = {
     entry:[       
-        path.resolve(__dirname,'../src/index.jsx'),
+        path.resolve(__dirname,'../src/routes/index.js'),
         "@babel/polyfill",
         path.resolve(__dirname,'../public/index.html')
     ],
@@ -31,13 +31,14 @@ module.exports = {
     resolve:{
         extensions:['.js','.jsx','.css','.json'],
         alias:{
-            components:path.resolve(__dirname,'../src/components')
+            components:path.resolve(__dirname,'../src/components'),
+            containers:path.resolve(__dirname,'../src/containers'),
         }
     },
     module:{
         rules:[
             {
-                test:/\.jsx$/,
+                test:/\.(jsx|js)$/,
                 exclude:/node_modules/,
                 include:path.resolve(__dirname,'../src'),
                 use:{

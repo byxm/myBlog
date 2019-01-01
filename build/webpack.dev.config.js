@@ -2,6 +2,7 @@ const path = require('path');
 const common = require('./webpack.common.config');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 module.exports = merge(common,{
@@ -18,6 +19,7 @@ module.exports = merge(common,{
     devtool:'inline-source-map',
     mode:'development',
     plugins:[
+        new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 })
