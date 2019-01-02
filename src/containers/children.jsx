@@ -25,7 +25,7 @@ class Children extends React.Component{
                     <button>点击我减1</button>
                     <button>点击我过一秒加1</button>
                 </div>
-                <p>{this.props.age}</p>
+                <p>{this.props.age} </p>
             </div>
         )
     }
