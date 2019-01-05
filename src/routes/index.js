@@ -4,8 +4,8 @@ import { BrowserRouter,Route,Link } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore,applyMiddleware,compose } from 'redux';
 import reducer from '../redux';
+import LayOut from '../layOut'
 import thunk from 'redux-thunk';
-import Children from 'containers/children'
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -16,9 +16,9 @@ const store = createStore(reducer,composeEnhancers(
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <Route path="/" component={Children}  />
+            <Route path="/" component={LayOut}  />
         </BrowserRouter>
-    </Provider>,
+     </Provider>,
     document.getElementById('root')
 )
 

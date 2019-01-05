@@ -8,13 +8,14 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 
-const evn = process.argv.pop();//获取当前环境，生产或开发
-const EVN = {
-    pro:'production',
-    dev:'development'
-}
+// const evn = process.argv.pop();//获取当前环境，生产或开发
+const isDev = process.env.NODE_ENV !== 'production';
+// const EVN = {
+//     pro:'production',
+//     dev:'development'
+// }
 
-const isDev = evn === EVN.dev;
+// const isDev = evn === EVN.dev;
 
 module.exports = {
     entry:[       
@@ -66,7 +67,7 @@ module.exports = {
                 exclude:/node_modules/,
                 include:path.resolve(__dirname,'../src'),
                 use:[
-                    MiniCssExtractPlugin.loader,
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,//开发环境用style-loader热加载，生产环境单独抽离CSS文件
                     {
                         loader:'css-loader',
                         options:{
@@ -155,14 +156,17 @@ module.exports = {
   },
 
     plugins:[
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV)//设置生产环境的环境变量NODE_ENV
+        }),
         new HtmlWebpackPlugin({
             title:"my blog",
             template:path.resolve(__dirname,'../public/index.html'),
             filename:'index.html'
         }),
         new MiniCssExtractPlugin({
-            filename:evn === EVN.evn ? "[name].[hash].css" : "[name].css",
-            chunkFilename:evn === EVN.evn ? "[id].[hash].css" : "[id].css" 
+            filename:isDev ? "[name].[hash].css" : "[name].css",
+            chunkFilename:isDev ? "[id].[hash].css" : "[id].css" 
         }),
         new webpack.SourceMapDevToolPlugin({
             filename:'[name].js.map',
@@ -175,8 +179,8 @@ module.exports = {
             cache: true,
             sourceMap: true,
             uglifyOptions: {
-                ie8: true,
+                ie8: true
             }
-    })
+        })
     ]
 }
