@@ -1,0 +1,13 @@
+.nav-content-logo{
+    font-size: 0.75em;
+    $logo-size:9.375em;
+    $logo-content-size:100%;
+    width: $logo-size;
+    height: $logo-size;
+    margin: 1.25em auto;
+    img{
+        width:$logo-content-size;
+        height:$logo-content-size;
+        border-radius: 50%;
+    }
+}

@@ -34,6 +34,7 @@ module.exports = {
         alias:{
             components:path.resolve(__dirname,'../src/components'),
             containers:path.resolve(__dirname,'../src/containers'),
+            assets:path.resolve(__dirname,'../src/assets')
         }
     },
     module:{
@@ -92,7 +93,11 @@ module.exports = {
                 ]
             },
             {
-                test:/\.(jpg|png|gif|bmp)$/,
+                test:/\.(jpg|png|gif|bmp|svg)$/,
+                loader:'file-loader'
+            },
+            {
+                test:/\.(woff|woff2|eot|ttf|otf)$/,
                 loader:'file-loader'
             }
         ]

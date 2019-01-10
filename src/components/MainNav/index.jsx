@@ -1,13 +1,4 @@
-import React from 'react';
+import NavItems from './navItems';
+import MyPhoto from './myPhoto';
 
-
-class MainNav extends React.Component{
-
-    render(){
-        return (
-            <h1></h1>
-        )
-    }
-}
-
-export default MainNav
+export {NavItems,MyPhoto}
