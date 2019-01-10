@@ -1,6 +1,6 @@
 //postcss.config.js
 const flexbugsFixes = require("postcss-flexbugs-fixes");
-const presetEnv = require("postcss-preset-env");
+const postcssPresetEnv  = require("postcss-preset-env");
 const autoprefixer = require("autoprefixer");
 const precss = require("precss");
 const nested = require("postcss-nested");
@@ -16,14 +16,17 @@ module.exports = {
   //插件
   plugins: [
     flexbugsFixes,
-    presetEnv({
+    postcssPresetEnv({
       autoprefixer: {
         flexbox: 'no-2009',
       },
       stage: 3,
     }),
-    autoprefixer({grid: true}),
+    autoprefixer({
+      grid: "autoplace",
+      flexbox: "no-2009"
+    }),
     precss,
-    nested,
+    nested
   ]
 };

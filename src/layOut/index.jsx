@@ -19,7 +19,6 @@ class LayOut extends React.Component{
                         <MainNav />
                     </div>   
                     <div className={style['main-title']}>    
-                    
                     </div>
                     <div className={style['main-content']}></div>
                 </div>

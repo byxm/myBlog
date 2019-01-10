@@ -1,5 +1,5 @@
 import React from 'react';
-import {MyPhoto,NavItems} from 'components/mainNav';
+import {MyPhoto,NavItems,ConcactMe} from 'components/mainNav';
 
 
 class MainNav extends React.Component{
@@ -14,6 +14,7 @@ class MainNav extends React.Component{
             <>
                 <MyPhoto />
                 <NavItems />
+                <ConcactMe />
             </>
         )
     }
