@@ -44,7 +44,7 @@ module.exports={
         "react/prefer-stateless-function":1,              //无状态组件应该要写成一个无状态函数  
         "react/require-render-return":2,                  //render函数里面必须有return返回值  
         "react/jsx-no-bind":["warn", {                    //警告不能再虚拟DOM里面直接使用bind  
-            "ignoreDOMComponents": false,
+            "ignoreDOMComponents": true,
             "ignoreRefs": false
           }]
     },

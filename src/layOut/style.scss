@@ -4,29 +4,26 @@ $layout-min-height:100vh;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    // width: 120em;
+    // width: 120em;   
     // max-width: 100%;
     .main-nav{
         width: 12em;
-        // max-width: 12em;
-        // font-size: 0.5em;
+        position: relative;
+        // max-width: 10%;
         height: $layout-min-height;
-        // max-width: 40%;
         background-color: #474D57;   
     }
     .main-title{
-        // flex: 2;
         width: 30em;
-        // max-width: 25%;
-        // font-size: 1em;
+        // max-width: 30%;
         height: $layout-min-height;
         overflow-y: auto;
         background-color: green;
     }   
     .main-content{
-        flex: 1;
-        // width: 65%;
-        // max-width: 65%;
+        flex: 1;  
+        // width: 72em;
+        // max-width: 60%;
         height: $layout-min-height;
         overflow-y: auto;
         background: yellow;

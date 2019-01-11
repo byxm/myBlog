@@ -7,7 +7,7 @@ class MainNav extends React.Component{
     componentDidMount() {
         
     }
-    
+   
 
     render(){
         return (
@@ -15,6 +15,7 @@ class MainNav extends React.Component{
                 <MyPhoto />
                 <NavItems />
                 <ConcactMe />
+                <div onClick={() => {this.handle}}></div>
             </>
         )
     }

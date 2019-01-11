@@ -34,7 +34,8 @@ module.exports = {
         alias:{
             components:path.resolve(__dirname,'../src/components'),
             containers:path.resolve(__dirname,'../src/containers'),
-            assets:path.resolve(__dirname,'../src/assets')
+            assets:path.resolve(__dirname,'../src/assets'),
+            generalComponents:path.resolve(__dirname,'../src/generalComponents')
         }
     },
     module:{
@@ -48,7 +49,7 @@ module.exports = {
                     options:{
                         cacheDirectory:isDev ,
                         sourceMap:isDev 
-                    }
+                    }           
                 }
             },
             {

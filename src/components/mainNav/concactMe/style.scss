@@ -5,10 +5,13 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    position: absolute;
+    bottom: 0.0625em;
     .concact-me-content{
         flex: 1;
-        border: 1px solid #626262;
-        border-top: 2px solid #3C4149;
+        border: 0.0625em solid #626262;
+        border-top: 0.125em solid #3C4149;
+        cursor: pointer;
         p{
             width: 40%;
             margin: .4em auto;
@@ -16,7 +19,20 @@
             i{
                 color:#a6a6a7;
                 font-size: 2.25em;
+                transition: color .3s ease-out;
             }
         }
+        transition: background-color .3s ease-out;
+        &:hover{
+            background-color: #40464F;
+            i{color: #fff;}
+        }
+    }
+    .floating-layer{
+        width: 6.25em;
+        height: 3.125em;
+        position: absolute;
+        bottom: 3.125em;
+        background-color: yellow;
     }
 }
