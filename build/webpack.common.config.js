@@ -44,13 +44,18 @@ module.exports = {
                 test:/\.(jsx|js)$/,
                 exclude:/node_modules/,
                 include:path.resolve(__dirname,'../src'),
-                use:{
-                    loader:'babel-loader',
-                    options:{
-                        cacheDirectory:isDev ,
-                        sourceMap:isDev 
-                    }           
-                }
+                use:[
+                    {
+                        loader:'babel-loader',
+                        options:{
+                            cacheDirectory:isDev ,
+                            sourceMap:isDev
+                        },
+                    },
+                    {
+                        loader:'eslint-loader',
+                    }
+                ]
             },
             {
                 test:/\.html$/,

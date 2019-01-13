@@ -1,21 +1,21 @@
 $layout-min-height:100vh;
+.main-content-box{
 .main-layout{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    // width: 120em;   
-    // max-width: 100%;
     .main-nav{
+        // flex: 1;
         width: 12em;
         position: relative;
-        // max-width: 10%;
         height: $layout-min-height;
         background-color: #474D57;   
     }
     .main-title{
-        width: 30em;
-        // max-width: 30%;
+        // flex: 3;
+        width: 28em;
+        // min-width: 30%;
         height: $layout-min-height;
         overflow-y: auto;
         background-color: green;
@@ -23,11 +23,13 @@ $layout-min-height:100vh;
     .main-content{
         flex: 1;  
         // width: 72em;
-        // max-width: 60%;
+        // width: 60%;
+        // min-width: 60%;
         height: $layout-min-height;
         overflow-y: auto;
         background: yellow;
     }
+}
 }
 
 @font-face {

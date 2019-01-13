@@ -22,6 +22,7 @@ module.exports={
         "valid-jsdoc":2,
         "no-console":0,
         "no-debugger":0,
+        "no-unused-vars":1,
         "array-callback-return":1,                      //有返回值的数组迭代方法需要有return关键字
         "react/jsx-uses-react":2,
         "react/jsx-uses-vars":2,                        //不能出现未使用的var定的组件

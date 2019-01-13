@@ -18,7 +18,9 @@ module.exports = merge(common,{
         openPage:"",
         publicPath:"/",
         progress:true,
-        clientLogLevel:"none"//组织热加载模块控制台信息输出显示
+        clientLogLevel:"none",//组织热加载模块控制台信息输出显示
+        overlay:true,        //显示报错信息在浏览器端
+        historyApiFallback: true
     },
     mode:'development',
     plugins:[

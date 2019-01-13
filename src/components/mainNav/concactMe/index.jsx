@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './style.scss';
-// import {PopverLayer} from 'generalComponents';
+import {PopverLayer} from 'generalComponents';
+
 
 class ConcactMe extends React.Component{
 
@@ -26,11 +27,11 @@ class ConcactMe extends React.Component{
                     <div className={style['concact-me-box']}>
                         {
                             concatMeList.map(i=>
-                                // <PopverLayer>
+                                <PopverLayer key={i.id}>
                                     <div onClick={() => {this.handleToMyConcact(i.concactPage,i.isNewPage)}} key={i.id} className={style['concact-me-content']}>
                                         <p>{i.icon}</p>
                                     </div>
-                                // </PopverLayer>
+                                </PopverLayer>
                             )
                         }
                        
