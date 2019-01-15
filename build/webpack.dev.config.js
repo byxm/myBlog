@@ -20,7 +20,7 @@ module.exports = merge(common,{
         progress:true,
         clientLogLevel:"none",//组织热加载模块控制台信息输出显示
         overlay:true,        //显示报错信息在浏览器端
-        historyApiFallback: true
+        historyApiFallback: true        //调用浏览器HTML5api，解析不了的需要定向到public下的index.html
     },
     mode:'development',
     plugins:[

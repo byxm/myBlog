@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter,Route,Switch,HashRouter } from 'react-router-dom'
+import { BrowserRouter,Route,Switch } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore,applyMiddleware,compose } from 'redux';
 import reducer from '../redux';
-import LayOut from '../layOut'
-import Test from '../test'
+import LayOut from '../layOut';
+// import Test from '../test';
+import NotFound  from 'components/NotFound';
 import thunk from 'redux-thunk';
 
 
@@ -18,8 +19,8 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                    <Route path="/test" component={Test}  />
-                    <Route path="/" component={LayOut}  />
+                    <Route exact path="/" component={LayOut}  />
+                    <Route component={NotFound} />
             </Switch>
         </BrowserRouter>
      </Provider>,

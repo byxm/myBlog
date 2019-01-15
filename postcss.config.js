@@ -21,6 +21,9 @@ module.exports = {
         flexbox: 'no-2009',
       },
       stage: 3,
+      features: {
+        'color-mod-function': { unresolved: 'warn' }
+      }
     }),
     autoprefixer({
       grid: "autoplace",

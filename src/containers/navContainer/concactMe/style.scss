@@ -1,0 +1,62 @@
+.concact-me-box{
+    width: 100%;
+    height: 3.125em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0.0625em;
+    .concact-me-content{
+        flex: 1;
+        border: 0.0625em solid #626262;
+        border-top: 0.125em solid #3C4149;
+        cursor: pointer;
+        p{
+            width: 40%;
+            margin: .4em auto;
+            i{
+                color:#a6a6a7;
+                font-size: 2.25em;
+                transition: color .3s ease-out;
+            }
+        }
+        transition: background-color .3s ease-out;
+        &:hover{
+            background-color: #40464F;
+            i{color: #fff;}
+            .concact-tooltip{
+                opacity: 1;
+                bottom: 4.2em;
+                transition: all .5s ease-out;
+            }
+        }
+    }
+    .concact-tooltip{
+        $opacity:.4;
+        width: 6.25em;
+        min-height: 1.5em;
+        padding: 0.3125em;
+        position: absolute;
+        color: #fff;
+        bottom: 3.8em;
+        background-color: rgba(0,0,0,$opacity);
+        opacity: 0;
+        .concact-bottom-arrow{
+            width: 0;
+            height: 0;
+            border-left: 0.625em solid transparent;
+            border-right: 0.625em solid transparent;
+            border-top: 1.25em solid hsla(0,0,0,$opacity);
+            position: absolute;
+            left: 40%;
+            margin-top: 0.7em;
+            
+        }
+        .concact-text{
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

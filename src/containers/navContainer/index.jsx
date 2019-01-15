@@ -1,5 +1,7 @@
 import React from 'react';
-import {MyPhoto,NavItems,ConcactMe} from 'components/mainNav';
+import MyPhoto from './myPhoto';
+import NavItems from './navItems';
+import ConcactMe from './concactMe'
 
 
 class MainNav extends React.Component{
@@ -15,7 +17,6 @@ class MainNav extends React.Component{
                 <MyPhoto />
                 <NavItems />
                 <ConcactMe />
-                <div onClick={() => {this.handle}}></div>
             </>
         )
     }
