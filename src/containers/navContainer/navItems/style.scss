@@ -1,13 +1,58 @@
 .nav-item-box{
     width: 100%;
-    height: 3.125em;
-    // background-color: #fafafa;
+    height: 10em;
     margin-top: 6.5em;
-    li{
+    @mixin navItemList($backColor:"",$color:#a6a6a7) {
+        width: 100%;
+        height: 2.5em;
+        cursor: pointer;
+        $border-width:0.0625em;
+        $border-color:#3C4149;
         font-size: 1.125em;
-        span{
-            font-size: 1em;
-            color: #A6A6A7;
+        background-color: $backColor;
+        &:hover{
+            background-color: rgb(64, 70, 79);
+            @mixin font-transition {
+                transition: all .3s ease-in;
+            }
+            .nav-item-flex{
+                $font-color:#fff;
+                i{color: $font-color;@include font-transition();}
+                span{color:$font-color;@include font-transition();}   
+            }
+            @include font-transition();
+        }
+        .nav-item-flex{
+            $font-mian:1em;
+            display: flex;
+            flex-wrap: nowrap;
+            padding: 0.7em 0 0 0.6em;
+            i{
+                font-size: $font-mian;
+                color: $color;
+            }
+            span{
+                display: inline-block;
+                width: 100%;
+                font-size: $font-mian;
+                color: $color;
+                margin-left: -2 * $font-mian;
+                text-align: center;
+            }
+        }
+    } 
+    .nav-item-list{
+        @include navItemList("");
+    }
+    .nav-item-listactive{
+        @include navItemList(#fafafa,#000);
+        &:hover{
+            background-color: #fafafa;
+            .nav-item-flex{
+                $font-color:#000;
+                i{color: $font-color;}
+                span{color:$font-color;}   
+            }
         }
     }
 }

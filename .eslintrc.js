@@ -32,7 +32,7 @@ module.exports={
             "submit": true,
             "reset": true
           }],
-        "react/destructuring-assignment": ["warn", "always"],     //组件属性获取使用解构赋值
+        "react/destructuring-assignment": ["off", "always"],     //组件属性获取使用解构赋值
         "react/forbid-component-props": ["warn", { "forbid": ["className"] }],  //禁止自定义组件使用JSX的默认属性
         "react/no-access-state-in-setstate":2,            //禁止在setState函数中使用this.state
         "react/no-array-index-key":2,                     //禁止迭代生成的虚拟DOM中使用index作为key
