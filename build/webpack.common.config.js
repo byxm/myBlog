@@ -27,7 +27,7 @@ module.exports = {
         path:path.resolve(__dirname,'../dist'),
         chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
         filename:isDev  ? '[name].[hash].js' : '[name].js',
-        publicPath:"./"
+        publicPath:"./",
     },
     resolve:{
         extensions:['.js','.jsx','.css','.json'],
@@ -35,7 +35,8 @@ module.exports = {
             components:path.resolve(__dirname,'../src/components'),
             containers:path.resolve(__dirname,'../src/containers'),
             assets:path.resolve(__dirname,'../src/assets'),
-            generalComponents:path.resolve(__dirname,'../src/generalComponents')
+            generalComponents:path.resolve(__dirname,'../src/generalComponents'),
+            httpAjax:path.resolve(__dirname,'../src/httpAjax')
         }
     },
     module:{

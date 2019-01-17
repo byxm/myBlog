@@ -1,5 +1,8 @@
 import React from 'react';
 import style from './style.scss';
+import httpAjax from 'httpAjax';
+import apiUrl from 'httpAjax/apiUrl';
+import Pover from 'generalComponents/popverLayer'
 
 
 class NavItems extends React.Component{
@@ -22,7 +25,9 @@ class NavItems extends React.Component{
         }
 
         componentDidMount(){
+            httpAjax.ajax(apiUrl.myLife).then(res => {
                 
+            })
         }
         handleClickItem(i){
            this.setState({isActive:i})
@@ -32,21 +37,26 @@ class NavItems extends React.Component{
             const {navList} = this.props;
             const {isActive} = this.state;
             return (
-                <ul className={style['nav-item-box']}>
-                {
-                        navList.map((i,index) => <li 
-                                        className={style[`nav-item-list${isActive === index ? "active" : ""}`]}
-                                        onClick={() => {this.handleClickItem(index)}}
-                                        key={i.label}
-                                    >
-                                    <p className={style['nav-item-flex']}>
-                                        {i.icon}
-                                        <span>{i.label}</span> 
-                                    </p>
-                                </li>
-                        )
-                }
-                </ul>
+                <>
+                    <ul className={style['nav-item-box']}>
+                        {
+                            navList.map((i,index) => <li 
+                            className={style[`nav-item-list${isActive === index ? "active" : ""}`]}
+                            onClick={() => {this.handleClickItem(index)}}
+                            key={i.label}
+                            >
+                                        <p className={style['nav-item-flex']}>
+                                            {i.icon}
+                                            <span>{i.label}</span> 
+                                        </p>
+                                    </li>
+                            )
+                        }
+                        </ul>
+                    <Pover.Spin>
+                        点我关闭
+                    </Pover.Spin>
+                </>
             )
         }
 }

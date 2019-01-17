@@ -25,7 +25,7 @@ class LayOut extends React.Component{
                                 <MainNav />
                             </div>   
                             <div className={style['main-title']}>  
-                                标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+                                
                             </div>
                             <div className={style['main-content']}>
                             

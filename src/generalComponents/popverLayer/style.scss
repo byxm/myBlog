@@ -1,7 +1,9 @@
-.floating-layer{
-    width: 6.25em;
-    height: 3.125em;
-    // position: absolute;
-    // bottom: 3.125em;
-    // background-color: yellow;
+.pover-float-box{
+    width: 100vh;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: none;
 }

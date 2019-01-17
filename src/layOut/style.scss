@@ -18,16 +18,14 @@ $layout-min-height:100vh;
         // min-width: 30%;
         height: $layout-min-height;
         overflow-y: auto;
-        background-color: green;
+        background-color: #fafafa;
+        border-right: 0.125em solid #d8e0ed;
     }   
     .main-content{
         flex: 1;  
-        // width: 72em;
-        // width: 60%;
-        // min-width: 60%;
         height: $layout-min-height;
         overflow-y: auto;
-        background: yellow;
+        background-color: #fff;
     }
 }
 }
