@@ -44,7 +44,7 @@ module.exports={
         "react/prefer-es6-class":2,                       //强制使用es6 class来定义组件
         "react/prefer-stateless-function":1,              //无状态组件应该要写成一个无状态函数  
         "react/require-render-return":2,                  //render函数里面必须有return返回值  
-        "react/jsx-no-bind":["warn", {                    //警告不能再虚拟DOM里面直接使用bind  
+        "react/jsx-no-bind":["off", {                    //警告不能再虚拟DOM里面直接使用bind  
             "ignoreDOMComponents": true,
             "ignoreRefs": false
           }]
