@@ -19,6 +19,8 @@ const store = createStore(reducer,composeEnhancers(
 
 const NotFound = lazyLoad(()=>import("components/NotFound"));
 
+
+
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>

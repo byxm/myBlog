@@ -1,10 +1,11 @@
 import React from 'react';
 import style from './style.scss';
-import httpAjax from 'httpAjax';
-import apiUrl from 'httpAjax/apiUrl';
 import { Link,withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {getArticleTitle}  from '../../../redux/home.redux'
 // import Pover from 'generalComponents/popverLayer'
 
+@connect(null,{getArticleTitle})
 @withRouter
 class NavItems extends React.Component{
         constructor(props){
@@ -17,8 +18,8 @@ class NavItems extends React.Component{
 
         static defaultProps = {
             navList:[
-                {label:"生活",icon:<i className="iconfont">&#xe61b;</i>,isActive:"",pathUrl:'/myLife'},
                 {label:"技术",icon:<i className="iconfont">&#xe604;</i>,isActive:"",pathUrl:'/compareTechology'},
+                {label:"生活",icon:<i className="iconfont">&#xe61b;</i>,isActive:"",pathUrl:'/myLife'},
                 {label:"荐书",icon:<i className="iconfont">&#xe809;</i>,isActive:"",pathUrl:'/recommendBook'},
                 {label:"总结",icon:<i className="iconfont">&#xe682;</i>,isActive:"",pathUrl:'/conclude'},
                 {label:"关于我",icon:<i className="iconfont">&#xe600;</i>,isActive:"",pathUrl:'/aboutMe'},
@@ -26,16 +27,18 @@ class NavItems extends React.Component{
         }
 
         componentDidMount(){
-            httpAjax.ajax(apiUrl.myLife).then(res => {
-                    const {pathname} = this.props.location;
-                    this.setState({
-                        isActive:pathname
-                    })
+            const {location:{pathname},getArticleTitle,navList} = this.props;
+            const currentTitle = navList.filter(i=>i.pathUrl===pathname)
+            this.setState({
+                isActive:pathname
+            },()=>{
+                getArticleTitle(currentTitle[0].label)
             })
-            
         }
-        handleClickItem(i){
-           this.setState({isActive:i})
+        handleClickItem(i,label){
+           this.setState({isActive:i},()=>{
+               this.props.getArticleTitle(label)
+           })
         }
 
         render(){
@@ -48,7 +51,7 @@ class NavItems extends React.Component{
                             navList.map((i,index) => <Link to={i.pathUrl}  key={i.label}>
                                         <li 
                                             className={style[`nav-item-list${isActive===index?"active":isActive===i.pathUrl?"active":""}`]}
-                                            onClick={() => {this.handleClickItem(index)}}
+                                            onClick={() => {this.handleClickItem(index,i.label)}}
                                         >
                                         <p className={style['nav-item-flex']}>
                                             {i.icon}

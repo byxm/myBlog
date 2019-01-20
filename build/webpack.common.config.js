@@ -27,7 +27,7 @@ module.exports = {
         path:path.resolve(__dirname,'../dist'),
         chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
         filename:isDev  ? '[name].[hash].js' : '[name].js',
-        publicPath:"./",
+        publicPath:"/",
     },
     resolve:{
         extensions:['.js','.jsx','.css','.json'],

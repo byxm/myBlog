@@ -1,0 +1,61 @@
+.article-title{
+    width: 100%;
+    height: 2.4em;
+    border-bottom: 0.0625em solid #d8e0ed;
+    padding-top: 0.6em;
+    h2{
+        font-size: 1.5em;
+        text-align: center;
+    }
+}
+
+.article-title-content{
+    @mixin  transionAnimate($time) {
+        transition: all $time ease-in;
+    }
+    padding: 1em 1em 1em 1.5em;
+    height: calc(100vh - 4.1em);
+    overflow-y: auto;
+    opacity: 0;
+    padding-top: 1em;
+    @include transionAnimate(.5s);
+    $scrollbar-border:0.625em;
+    &::-webkit-scrollbar{
+        width: .5em;
+    }
+    &::-webkit-scrollbar-track{
+        border-radius: $scrollbar-border;
+        background-color: #ededed;
+    }
+    &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: $scrollbar-border;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: #A5A5A5;
+    }
+    :first-child{
+        margin-top: 1em;
+    }
+    .title-desc{
+        line-height: 2.3em;
+        cursor: pointer;
+        &:hover{
+            i,span{
+                color: #E53E0A;
+                @include transionAnimate(.3s);
+            }
+            background-color: rgba(211, 211, 211, .2);
+            @include transionAnimate(.3s);
+        }
+        span{
+            font-size: 1em;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.125em;
+            color: #67717C;
+        }
+    }
+}
+
+.article-title-content:first-child{
+        padding-top: 10em;
+}

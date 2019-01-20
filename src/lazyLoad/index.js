@@ -19,7 +19,6 @@ export const lazyLoad = (loaderComponents) => {
 }
 
 const ArticleTitle = lazyLoad(()=>import("containers/articleTitle"))
-const NotFound = lazyLoad(()=>import("components/NotFound"));
 
 
 const routerConfig = [
@@ -29,19 +28,19 @@ const routerConfig = [
     },
     {
         pathUrl:'/compareTechology',
-        component:NotFound
+        component:ArticleTitle
     },
     {
         pathUrl:'/recommendBook',
-        component:NotFound
+        component:ArticleTitle
     },
     {
         pathUrl:'/conclude',
-        component:NotFound
+        component:ArticleTitle
     },
     {
         pathUrl:'/aboutMe',
-        component:NotFound
+        component:ArticleTitle
     }
 ]
 

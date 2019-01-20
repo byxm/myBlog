@@ -21,7 +21,7 @@ class ConcactMe extends React.Component{
                         icon:<i className="iconfont">&#xe605;</i>,
                         concactPage:"Mailto:panyuximeng@163.com",
                         isNewPage:"_self",
-                        toolTip:"给我发邮件"
+                        toolTip:"我的邮箱"
                     }
                 ]
                 return (
