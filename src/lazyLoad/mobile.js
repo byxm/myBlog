@@ -18,7 +18,7 @@ export const lazyLoad = (loaderComponents) => {
     })
 }
 
-const ArticleTitle = lazyLoad(()=>import("containers/articleTitle/pcDesk"));
+const ArticleTitle = lazyLoad(()=>import("containers/articleTitle/mobilePhone"));
 
 const routerConfig = [
     {

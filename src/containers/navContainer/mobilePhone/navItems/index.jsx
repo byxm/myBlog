@@ -2,7 +2,7 @@ import React from 'react';
 import style from './style.scss';
 import { Link,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {getArticleTitle}  from '../../../redux/home.redux'
+import {getArticleTitle}  from '../../../../redux/home.redux'
 // import Pover from 'generalComponents/popverLayer'
 
 @connect(null,{getArticleTitle})
@@ -28,11 +28,13 @@ class NavItems extends React.Component{
 
         componentDidMount(){
             const {location:{pathname},getArticleTitle,navList} = this.props;
-            const currentTitle = navList.filter(i=>i.pathUrl===pathname)
+            const nowPathname = pathname!=="/"?pathname:"/compareTechology";
+            const currentTitle = navList.filter(i=>i.pathUrl===nowPathname)
             this.setState({
-                isActive:pathname
+                isActive:nowPathname
             },()=>{
-                getArticleTitle(currentTitle[0].label)
+                const label = currentTitle.length>0 && currentTitle[0].hasOwnProperty('label')?currentTitle[0].label:""
+                getArticleTitle(label)
             })
         }
         handleClickItem(i,label){

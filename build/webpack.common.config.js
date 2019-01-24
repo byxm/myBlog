@@ -16,6 +16,8 @@ const isDev = process.env.NODE_ENV !== 'production';
 // }
 
 // const isDev = evn === EVN.dev;
+const resolvePath = (pathLine) => path.resolve(__dirname,pathLine)
+
 
 module.exports = {
     entry:[       
@@ -32,11 +34,12 @@ module.exports = {
     resolve:{
         extensions:['.js','.jsx','.css','.json'],
         alias:{
-            components:path.resolve(__dirname,'../src/components'),
-            containers:path.resolve(__dirname,'../src/containers'),
-            assets:path.resolve(__dirname,'../src/assets'),
-            generalComponents:path.resolve(__dirname,'../src/generalComponents'),
-            httpAjax:path.resolve(__dirname,'../src/httpAjax')
+            components:resolvePath('../src/components'),
+            containers:resolvePath('../src/containers'),
+            assets:resolvePath('../src/assets'),
+            generalComponents:resolvePath('../src/generalComponents'),
+            httpAjax:resolvePath('../src/httpAjax'),
+            utils:resolvePath("../src/utils")
         }
     },
     module:{
