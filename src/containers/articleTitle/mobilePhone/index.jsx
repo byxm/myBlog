@@ -1,9 +1,11 @@
 import React,{PureComponent} from 'react';
 import httpAjax from 'httpAjax';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 import {getWebTitle} from '../../../redux/home.redux';
-import { cancelMaskerLayer } from 'utils'
+import { cancelMaskerLayer } from 'utils';
 import style from './style.scss';
+
 
 
 @connect(state=>({user:state.get('user')}),{getWebTitle})
@@ -12,7 +14,8 @@ class ArticleTitle extends PureComponent{
             super(props);
             this.state = {
                 navData:[],
-                currentTitle:0
+                currentTitle:0,
+                
             }
             this.handleArticleTitle = this.handleArticleTitle.bind(this);
             this.handleSpreadMenu = this.handleSpreadMenu.bind(this);
@@ -48,7 +51,10 @@ class ArticleTitle extends PureComponent{
       
       handleArticleTitle(currentIndex,title){
             document.title = title;
-            httpAjax.ajax('/articleContent?name=1').then(res=>{
+            httpAjax.ajax('/articleContent?name=0').then(res=>{
+                    // this.setState({
+
+                    // })
                     console.log(res.data);
             }).catch(err=>{
                 console.error(err);
@@ -64,6 +70,7 @@ class ArticleTitle extends PureComponent{
 
 
       render(){
+          const {match} = this.props;
           return (
               <>       
                 <div className={style['article-title']}>
@@ -77,13 +84,16 @@ class ArticleTitle extends PureComponent{
                 </div>
                 <ul ref={this.currentRef} className={style['article-title-content']}>
                     {
-                        this.state.navData.map((i,index)=><li
-                                key={i.contentIndex}
-                                className={style[`title-desc${index===this.state.currentTitle?"active":""}`]}
-                                onClick={()=>{this.handleArticleTitle(index,i.title)}}
-                            >
-                                <i className="iconfont">&#xe6cc;</i> <span>{i.title}</span>
-                        </li>)
+                        this.state.navData.map((i,index)=>
+                            <Link  key={i.contentIndex} to={`/content${match.url}/${i.id}`}>
+                                <li
+                                    className={style[`title-desc${index===this.state.currentTitle?"active":""}`]}
+                                    onClick={()=>{this.handleArticleTitle(index,i.title)}}
+                                >
+                                    <i className="iconfont">&#xe6cc;</i> <span>{i.title}</span>
+                                </li>
+                            </Link>
+                        )
                     }
                 </ul>
               </>

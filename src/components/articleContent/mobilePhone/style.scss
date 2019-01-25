@@ -1,0 +1,21 @@
+.content-box{
+    width: 100%;
+    overflow-y: auto;
+    .content-header-title{
+        width: 100%;
+        height: 3.5em;
+        border-bottom: 0.0625em solid #ccc;
+        position: relative;
+        .arrow-left{
+            position: absolute;
+            left: .5em;
+            top: .7em;
+            font-size: 1.5em;
+        }
+        .title-word{
+            font-size: 1.3em;
+            line-height: 2.8em;
+            text-align: center;
+        }
+    }
+}

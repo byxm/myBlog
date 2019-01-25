@@ -10,7 +10,7 @@ import './reset.scss';
 import thunk from 'redux-thunk';
 
 import MainNav from 'containers/navContainer/mobilePhone'
-import ArticleTitle from 'components/articleContent';
+
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -19,6 +19,8 @@ const store = createStore(reducer,composeEnhancers(
 ))
 
 const NotFound = lazyLoad(()=>import("components/NotFound"));
+const ArticleContent = lazyLoad(()=>import("components/articleContent/mobilePhone"));
+
 
 const cancelMaskLayer = () => {
     cancelMaskerLayer(0,"none","none");
@@ -36,22 +38,21 @@ const MobileLayout = () => {
                                     <Switch>
                                         {
                                                 routerConfig.map(i => { 
-                                                    return <Route key={i.pathUrl} 
-                                                    path={i.pathUrl} 
-                                                    component={i.component}
-                                                    />
+                                                    return  <Route  
+                                                                key={i.pathUrl}
+                                                                path={i.pathUrl} 
+                                                                component={i.component}
+                                                            />
                                                 }
                                             )
                                         }
+                                        <Route path="/content/:currentMenu:createTime" component={ArticleContent} />
                                         <Route exact path="/" render={()=><Redirect to="/compareTechology" />} />
                                         <Route component={NotFound} />
                                     </Switch>
                                 <div onClick={cancelMaskLayer} id="mask-layer-box" className={styleMobile['mask-layer']}>
                             </div>
                         </div>
-                        {/* <div className={styleMobile['main-content']}>
-                                <ArticleTitle/>
-                        </div> */}
                     </div>
                 </div>
             </BrowserRouter>

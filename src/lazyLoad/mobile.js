@@ -15,7 +15,7 @@ export const lazyLoad = (loaderComponents) => {
    return Loadable({
         loader:loaderComponents,
         loading:LoadingComponent
-    })
+   })
 }
 
 const ArticleTitle = lazyLoad(()=>import("containers/articleTitle/mobilePhone"));
@@ -42,6 +42,7 @@ const routerConfig = [
         component:ArticleTitle
     }
 ]
+
 
 
 export default routerConfig;

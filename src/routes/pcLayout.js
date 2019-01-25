@@ -9,7 +9,7 @@ import './reset.scss';
 import thunk from 'redux-thunk';
 
 import MainNav from 'containers/navContainer/pcDesk'
-import ArticleTitle from 'components/articleContent';
+import ArticleTitle from 'components/articleContent/pcDesk';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
