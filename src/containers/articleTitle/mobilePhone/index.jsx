@@ -2,20 +2,19 @@ import React,{PureComponent} from 'react';
 import httpAjax from 'httpAjax';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
-import {getWebTitle} from '../../../redux/home.redux';
+import {getWebTitle,getCurrentIndex} from '../../../redux/home.redux';
 import { cancelMaskerLayer } from 'utils';
 import style from './style.scss';
 
 
 
-@connect(state=>({user:state.get('user')}),{getWebTitle})
+@connect(state=>({user:state.get('user')}),{getWebTitle,getCurrentIndex})
 class ArticleTitle extends PureComponent{
       constructor(props){
             super(props);
             this.state = {
                 navData:[],
                 currentTitle:0,
-                
             }
             this.handleArticleTitle = this.handleArticleTitle.bind(this);
             this.handleSpreadMenu = this.handleSpreadMenu.bind(this);
@@ -33,10 +32,11 @@ class ArticleTitle extends PureComponent{
       }
 
       componentDidMount(){
-           const {location:{pathname},navAjaxApi} = this.props;
+           const {location:{pathname},navAjaxApi,user} = this.props;
             httpAjax.ajax(navAjaxApi[pathname]).then(res=>{
                     this.setState({
-                        navData:res.data
+                        navData:res.data,
+                        currentTitle:user.get('currentIndex')
                     },()=>{
                         this.currentRef.current.style.opacity = 1;
                         this.currentRef.current.style.marginTop = 0;
@@ -50,18 +50,17 @@ class ArticleTitle extends PureComponent{
       }
       
       handleArticleTitle(currentIndex,title){
+            const {getWebTitle,getCurrentIndex} = this.props;
             document.title = title;
-            httpAjax.ajax('/articleContent?name=0').then(res=>{
-                    // this.setState({
-
-                    // })
-                    console.log(res.data);
-            }).catch(err=>{
-                console.error(err);
-            })
-            this.setState({
-                currentTitle:currentIndex
-            })
+            httpAjax.ajax('/articleContent?name=0').then(()=>{
+                    this.setState({
+                        currentTitle:currentIndex
+                    });
+                }).catch(err=>{
+                    console.error(err);
+                })
+                // getWebTitle(title);
+                // getCurrentIndex(currentIndex);
       }
 
       handleSpreadMenu(){

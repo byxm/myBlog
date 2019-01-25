@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import style from './style.scss';
 
 
+@connect(state=>({user:state.get('user')}))
 class ArticleContent extends React.Component{
         constructor(props){
             super(props);
@@ -21,7 +23,7 @@ class ArticleContent extends React.Component{
                 <div className={style['content-box']}>
                     <div className={style['content-header-title']}>
                             <span onClick={this.handleBackTitle} className={`iconfont ${style['arrow-left']}`}>&#xe606;</span>
-                            <p className={style['title-word']}>初到深圳的所见所闻</p>
+                            <p className={style['title-word']}>{this.props.user.get("webTitle")}</p>
                     </div>
                         <p>
                         孔令贤，2011年4月份毕业于西安电子科技大学通信工程学院信息安全专业，专业课程比较杂乱，又学通信工程又学计算机。在学校的时候零零散散的自学过C语言、Java、MFC、Javascript、汇编……，做过小软件，写过小木马和小病毒，除了钻研精神，自认为没有一技之长。
