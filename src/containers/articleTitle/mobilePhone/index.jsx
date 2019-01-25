@@ -59,8 +59,8 @@ class ArticleTitle extends PureComponent{
                 }).catch(err=>{
                     console.error(err);
                 })
-                // getWebTitle(title);
-                // getCurrentIndex(currentIndex);
+                getWebTitle(title);
+                getCurrentIndex(currentIndex);
       }
 
       handleSpreadMenu(){
