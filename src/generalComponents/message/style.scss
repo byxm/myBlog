@@ -1,0 +1,42 @@
+.message-box{
+    $base-height:100vh;
+    width: 100vw;
+    height: $base-height;
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    .message-alert{
+       width: 16em;
+        height: 6em;
+        margin: 0 auto;
+        margin-top: calc($base-height / 2 - 7.5em);
+        background-color: #fff;
+        border-radius: 2%;
+        position: relative;
+        padding: 2em;
+        transform: scale(0);
+        transition: transform .2s ease-in-out;
+        .message-title{
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-left: .8em;
+        }
+        .message-content{
+            margin: 1em 0 0 2.3em;
+            color: #666;
+        }
+        .message-button{
+            width: 6em;
+            height:3em;
+            color: #fff;
+            background-color: rgb(64, 169, 255);
+            border-radius: 10%;
+            border: none;
+            position: absolute;
+            right: 1.5em;
+            margin-top: .5em;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,10 +1,10 @@
 import React from 'react';
-
+import NotFoundPic from 'assets/images/NotFound.jpg';
 
 
 const NotFound = () => {
     return (
-        <h1>404，抱歉您访问的页面不存在</h1>
+        <img width="100%" src={NotFoundPic} alt="找不到图片" />
     )
 }
 

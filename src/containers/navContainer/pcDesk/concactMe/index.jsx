@@ -1,11 +1,26 @@
 import React from 'react';
+import Message from 'generalComponents/message';
 import style from './style.scss';
 
 
 class ConcactMe extends React.Component{
 
          handleToMyConcact(page,isNewPage="_blank"){
-            window.open(page,isNewPage)
+            if(isNewPage === "_self"){
+                    Message.warning({
+                        title:"提示",
+                        content:'默认打开网易邮箱客户端',
+                        onOk:()=>{window.open(page,isNewPage)}
+                    })
+            }else {
+                window.open(page,isNewPage)
+            }            
+        }
+        handleTanChu = () => {
+             Message.warning({
+                        title:"提示",
+                        content:'默认打开网易邮箱客户端',
+                    })
         }
         render (){
                 const concatMeList = [
@@ -41,7 +56,6 @@ class ConcactMe extends React.Component{
                                 </div>
                             )
                         }
-                       
                     </div>
                 )
         }       

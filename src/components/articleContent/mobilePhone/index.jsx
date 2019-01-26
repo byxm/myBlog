@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import httpAjax from 'httpAjax';
 import style from './style.scss';
 
 
@@ -10,8 +11,11 @@ class ArticleContent extends React.Component{
             this.handleBackTitle = this.handleBackTitle.bind(this);
         }
 
-        compnentDidMount(){
-
+        componentDidMount(){
+            httpAjax.ajax('/articleContent?name=0').then(()=>{
+            }).catch(err=>{
+                console.error(err);
+            })
         }
 
         handleBackTitle(){

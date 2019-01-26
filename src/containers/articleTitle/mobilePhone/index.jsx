@@ -52,15 +52,8 @@ class ArticleTitle extends PureComponent{
       handleArticleTitle(currentIndex,title){
             const {getWebTitle,getCurrentIndex} = this.props;
             document.title = title;
-            httpAjax.ajax('/articleContent?name=0').then(()=>{
-                    this.setState({
-                        currentTitle:currentIndex
-                    });
-                }).catch(err=>{
-                    console.error(err);
-                })
-                getWebTitle(title);
-                getCurrentIndex(currentIndex);
+            getWebTitle(title);
+            getCurrentIndex(currentIndex);
       }
 
       handleSpreadMenu(){

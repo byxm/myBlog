@@ -1,5 +1,6 @@
 import axios from 'axios';
 import NProgress from 'nprogress';
+import Message from 'generalComponents/message'
 
 //添加请求拦截器
 axios.interceptors.request.use((config) => {
@@ -33,9 +34,17 @@ class httpAjax{
                     if (res.status === 200) {
                         resolve(res.data)    
                     }else {
+                        Message.error({
+                            title:"错误信息",
+                            content:'请求失败，请重新刷新!'
+                        })
                         reject(res.data)
                     }
                 }).catch(err => {
+                    Message.error({
+                        title:'错误信息',
+                        content:'easy-mock服务器可能崩溃了，请刷新页面或稍后访问'
+                    })
                     console.error(err)
                 })
         })
