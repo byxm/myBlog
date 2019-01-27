@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getWebTitle,getCurrentIndex} from '../../../redux/home.redux';
 import { cancelMaskerLayer } from 'utils';
-import {Loading} from 'generalComponents';
 import style from './style.scss';
 
 
