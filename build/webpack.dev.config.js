@@ -4,8 +4,15 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const isDev = process.env.NODE_ENV !== 'production';
 
 module.exports = merge(common,{
+     output:{
+        path:path.resolve(__dirname,'../dist'),
+        chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
+        filename:isDev  ? '[name].[hash].js' : '[name].js',
+        publicPath:"/",
+    },
     devtool:'cheap-module-eval-source-map',//将错误代码映射到行，开发模式下推荐使用
     devServer:{
         host:'localhost',

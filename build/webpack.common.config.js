@@ -6,8 +6,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const SafeParser = require("postcss-safe-parser");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
-
 // const evn = process.argv.pop();//获取当前环境，生产或开发
 const isDev = process.env.NODE_ENV !== 'production';
 // const EVN = {
@@ -25,12 +23,12 @@ module.exports = {
         "@babel/polyfill",
         path.resolve(__dirname,'../public/index.html')
     ],
-    output:{
-        path:path.resolve(__dirname,'../dist'),
-        chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
-        filename:isDev  ? '[name].[hash].js' : '[name].js',
-        publicPath:"/",
-    },
+    // output:{
+    //     path:path.resolve(__dirname,'../dist'),
+    //     chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
+    //     filename:isDev  ? '[name].[hash].js' : '[name].js',
+    //     publicPath:"/",
+    // },
     resolve:{
         extensions:['.js','.jsx','.css','.json'],
         alias:{
@@ -103,7 +101,7 @@ module.exports = {
                 ]
             },
             {
-                test:/\.(jpg|png|gif|bmp|svg)$/,
+                test:/\.(jpg|png|gif|bmp|svg|ico)$/,
                 loader:'file-loader'
             },
             {
@@ -186,16 +184,7 @@ module.exports = {
         new webpack.SourceMapDevToolPlugin({
             filename:'[name].js.map',
             exclude:['vendor.js']
-        }),
-        new UglifyjsPlugin({
-            test: /\.jsx?/,
-            include: path.resolve(__dirname,'../src'),
-            exclude: /node_modules/,
-            cache: true,
-            sourceMap: true,
-            uglifyOptions: {
-                ie8: true
-            }
         })
+        
     ]
 }
