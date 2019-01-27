@@ -14,7 +14,7 @@ class ArticleTitle extends PureComponent{
             super(props);
             this.state = {
                 navData:[],
-                currentTitle:0,
+                currentTitle:"",
             }
             this.handleArticleTitle = this.handleArticleTitle.bind(this);
             this.handleSpreadMenu = this.handleSpreadMenu.bind(this);

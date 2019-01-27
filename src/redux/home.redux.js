@@ -10,7 +10,7 @@ const $$initState = fromJS({
     webTitle:"",
     articleTitle:'',
     articleList:[],
-    currentIndex:0
+    currentIndex:""
 })
 
 
