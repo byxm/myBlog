@@ -20,15 +20,16 @@ const store = createStore(reducer,composeEnhancers(
 const NotFound = lazyLoad(()=>import("components/NotFound"));
 
 
+
 const PCLayout = () => {
     return <Provider store={store}>
             <BrowserRouter>
                 <div className={style['main-content-box']}>
                     <div className={style['main-layout']}>
-                        <div className={style['main-nav']}>
+                        <div id="nav-box-div" className={style['main-nav']}>
                             <MainNav />
                         </div>   
-                        <div className={style['main-title']}>  
+                        <div id="title-box-div" className={style['main-title']}>  
                             <Switch>
                                     {
                                         routerConfig.map(i => { 

@@ -13,11 +13,11 @@ class MainNav extends React.Component{
 
     render(){
         return (
-            <>
+            <div id="nav-content-box">
                 <MyPhoto />
                 <NavItems />
                 <ConcactMe />
-            </>
+            </div>
         )
     }
 }

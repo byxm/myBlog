@@ -8,8 +8,11 @@ class ArticleContent extends React.Component{
         super(props);
         this.contentBox = React.createRef();
         this.backToBtn = React.createRef();
+        this.shrinkBtn = React.createRef();
         this.handleBackTop = this.handleBackTop.bind(this);
+        this.handleShrinkWeb = this.handleShrinkWeb.bind(this);
         this.timer = null;
+        this.changeSize = true;
     }
 
     componentDidMount(){
@@ -59,6 +62,36 @@ class ArticleContent extends React.Component{
                 cancelAnimationFrame(this.timer);
             }
        }.bind(this))
+    }
+
+    handleShrinkWeb(){
+            const shrinkStyle = {width:0,transition:"all .3s ease-out"};
+            const navBox = document.getElementById('nav-box-div');
+            const titleBox = document.getElementById('title-box-div');
+            const navContentBox = document.getElementById('nav-content-box');
+        if(this.changeSize){
+            this.shrinkBtn.current.style.transform = "rotateY(180deg)";
+            for(const key in shrinkStyle){
+                navBox.style[key] = shrinkStyle[key];
+                titleBox.style[key] = shrinkStyle[key];
+            }
+            setTimeout(()=>{
+                navContentBox.style.display = 'none';
+                titleBox.style.display = 'none';
+            },100)
+            this.changeSize = !this.changeSize;
+        }else {
+            this.shrinkBtn.current.style.transform = "rotateY(0deg)";
+            navBox.style.transition = "all .3s ease-in";
+            titleBox.style.transition = "all 1s ease-in";
+            navBox.style.width = "12em";
+            titleBox.style.width = "28em";
+            setTimeout(()=>{
+                navContentBox.style.display = 'block';
+                titleBox.style.display = 'block';
+            },200)
+            this.changeSize = !this.changeSize;
+        }
     }
 
 
@@ -130,20 +163,11 @@ class ArticleContent extends React.Component{
                 联系方式：
                 </p>
                 <p onClick={this.handleBackTop} ref={this.backToBtn} className={`${style['back-top']} iconfont`}>&#xe71a;</p>
+                <p ref={this.shrinkBtn} onClick={this.handleShrinkWeb} className={`${style['shrink-web-btn']} iconfont`}>&#xe61f;</p>
         </div>
            
     }
 }
 
-
-
-// const ArticleContent = () => {
-//     window.onscroll = () => {
-//     console.log(document.documentElement.scrollTop);
-// }
-
-
-    
-// }
 
 export default ArticleContent;
