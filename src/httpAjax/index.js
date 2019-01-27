@@ -1,6 +1,6 @@
 import axios from 'axios';
 import NProgress from 'nprogress';
-import Message from 'generalComponents/message'
+import {Message} from 'generalComponents'
 
 //添加请求拦截器
 axios.interceptors.request.use((config) => {

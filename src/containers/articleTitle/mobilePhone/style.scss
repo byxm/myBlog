@@ -43,7 +43,7 @@
     }
 
     @mixin basicTitleStyle($isHover) {
-        line-height: 2.3em;
+        line-height: 1.8em;
         cursor: pointer;
         &:hover{
             i,span{

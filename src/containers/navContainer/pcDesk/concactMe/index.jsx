@@ -1,5 +1,5 @@
 import React from 'react';
-import Message from 'generalComponents/message';
+import {Message} from 'generalComponents';
 import style from './style.scss';
 
 

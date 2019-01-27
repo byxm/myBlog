@@ -1,5 +1,7 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import NProgress from 'nprogress';
+import {Loading} from 'generalComponents';
 
 
 
@@ -7,11 +9,14 @@ const LoadingComponent = ({error}) => {
         if (error) {
             return <div>加载出错！</div>
         }else {
-            return <div>加载成功.....</div>
+            return Loading()
         }
 }
 
+
+
 export const lazyLoad = (loaderComponents) => {
+    NProgress.start();
    return Loadable({
         loader:loaderComponents,
         loading:LoadingComponent
