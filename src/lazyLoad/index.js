@@ -1,4 +1,5 @@
 import React from 'react';
+import {Loading} from 'generalComponents';
 import Loadable from 'react-loadable';
 
 
@@ -7,7 +8,7 @@ const LoadingComponent = ({error}) => {
         if (error) {
             return <div>加载出错！</div>
         }else {
-            return <div>加载成功.....</div>
+            return Loading();
         }
 }
 

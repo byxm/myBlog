@@ -9,7 +9,7 @@ import './reset.scss';
 import thunk from 'redux-thunk';
 
 import MainNav from 'containers/navContainer/pcDesk'
-import ArticleTitle from 'components/articleContent/pcDesk';
+import ArticleContent from 'components/articleContent/pcDesk';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -18,6 +18,7 @@ const store = createStore(reducer,composeEnhancers(
 ))
 
 const NotFound = lazyLoad(()=>import("components/NotFound"));
+
 
 const PCLayout = () => {
     return <Provider store={store}>
@@ -43,7 +44,7 @@ const PCLayout = () => {
                             </Switch>
                         </div>
                         <div className={style['main-content']}>
-                                <ArticleTitle/>
+                                <ArticleContent/>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,6 @@ $layout-min-height:100vh;
     .main-content{
         flex: 1;  
         height: $layout-min-height;
-        overflow-y: auto;
         background-color: #fff;
     }
 }
