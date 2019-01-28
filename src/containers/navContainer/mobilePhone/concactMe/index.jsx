@@ -1,11 +1,20 @@
 import React from 'react';
+import {Message} from 'generalComponents';
 import style from './style.scss';
 
 
 class ConcactMe extends React.Component{
 
          handleToMyConcact(page,isNewPage="_blank"){
-            window.open(page,isNewPage)
+            if (isNewPage === '_self') {
+                Message.warning({
+                    title:"访问提示",
+                    content:`将要访问您的手机邮手机邮手机邮手机邮手机邮手机邮箱我的邮箱：panyuximeng@163.com`,
+                    onOk:()=>{window.open(page,isNewPage)}
+                })
+            }else {
+                window.open(page,isNewPage)
+            }
         }
         render (){
                 const concatMeList = [

@@ -2,6 +2,8 @@
     $title-height:2.4em;
     width: 100%;
     height: $title-height;
+    
+    border-top: 0.0625em solid #d8e0ed;
     border-bottom: 0.0625em solid #d8e0ed;
     padding-top: 0.6em;
     h2{
@@ -12,12 +14,12 @@
         $font-base-size:2em;
         font-size: $font-base-size;
         position: absolute;
-        margin-top: -0.7em;
+        margin-top: -0.8em;
     }
 }
 .article-title-content{
     @mixin  transionAnimate($time) {
-        transition: all $time ease-in;
+        transition: $time padding, $time opacity, $time margin-top ease-in;
     }
     padding: 0em 1em 1em 1.5em;
     height: calc(100vh - 4.1em);

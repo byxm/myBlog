@@ -18,13 +18,16 @@ class Message {
                     <div id="messageBox" ref={this.boxRef} className={style['message-box']}>
                         <div id="messageRef" ref={this.messageRef} className={style['message-alert']}>
                             <p>
-                                <span style={{color,fontSize:'1.5em'}} className="iconfont" 
+                                <span style={{color,fontSize:'1.8em'}} className="iconfont" 
                                 dangerouslySetInnerHTML={{__html:typeIcon[type]}}></span>
                                 <span className={style['message-title']}>{messageProps.title}</span>
                             </p>
                             <p className={style['message-content']}>{messageProps.content}</p>
-                            <button onClick={()=>{handleCloseMess(this.messageRef,this.boxRef,messageProps.onOk)}} 
-                            type="button" className={style['message-button']}>知道了</button>
+                            <div className={style['message-btn-div']}>
+                                <button type="button" className={style['message-button-cancel']}>取消</button>
+                                <button onClick={()=>{handleCloseMess(this.messageRef,this.boxRef,messageProps.onOk)}} 
+                                type="button" className={style['message-button-confirm']}>知道了</button>
+                            </div>
                         </div> 
                     </div>,
                     document.body.appendChild(customDiv)

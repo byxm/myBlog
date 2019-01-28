@@ -15,7 +15,7 @@ module.exports = merge(common,{
     },
     devtool:'cheap-module-eval-source-map',//将错误代码映射到行，开发模式下推荐使用
     devServer:{
-        host:'localhost',
+        host:"0.0.0.0",
         port:8000,
         contentBase:[path.resolve(__dirname,'../public'),path.resolve(__dirname,'../dist')],
         compress:true,

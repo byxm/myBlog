@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter,Route,Switch,Redirect } from 'react-router-dom'
+import { BrowserRouter,Route,Switch,Redirect,HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore,applyMiddleware,compose } from 'redux';
 import reducer from '../redux';
@@ -26,9 +26,11 @@ const cancelMaskLayer = () => {
     cancelMaskerLayer(0,"none","none");
 }
 
+const Router = process.env.NODE_ENV === "development" ? BrowserRouter : HashRouter;//开发环境下使用BrowerRouter,服务器生产环境下使用HashRouter
+
 const MobileLayout = () => {
     return <Provider store={store}>
-            <BrowserRouter>
+            <Router>
                 <div className={styleMobile['main-content-box']}>
                     <div className={styleMobile['main-layout']}>
                         <div id="main-nav-mobile" className={styleMobile['main-nav']}>
@@ -55,7 +57,7 @@ const MobileLayout = () => {
                         </div>
                     </div>
                 </div>
-            </BrowserRouter>
+            </Router>
  </Provider>
 }
 

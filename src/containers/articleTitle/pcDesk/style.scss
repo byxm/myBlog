@@ -10,15 +10,18 @@
 }
 
 .article-title-content{
-    @mixin  transionAnimate($time) {
-        transition: all $time ease-in;
+    $padding:padding;
+    $opacity:opacity;
+    $margin-top:margin-top;
+    @mixin  transionAnimate($time,$style1,$style2,$style3) {
+        transition: $time padding, $time opacity, $time margin-top ease-in;
     }
     padding: 0em 1em 1em 1.5em;
     height: calc(100vh - 4.1em);
     overflow-y: auto;
     opacity: 0;
     margin-top: -1em;
-    @include transionAnimate(.5s);
+    @include transionAnimate(.5s,$padding,$opacity,$margin-top);
     $scrollbar-border:0.625em;
     &::-webkit-scrollbar{
         width: .5em;

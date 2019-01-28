@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter,Route,Switch,Redirect } from 'react-router-dom'
+import { BrowserRouter,Route,Switch,Redirect,HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore,applyMiddleware,compose } from 'redux';
 import reducer from '../redux';
@@ -19,11 +19,11 @@ const store = createStore(reducer,composeEnhancers(
 
 const NotFound = lazyLoad(()=>import("components/NotFound"));
 
-
+const Router = process.env.NODE_ENV === "development" ? BrowserRouter : HashRouter;//开发环境下使用BrowerRouter,服务器生产环境下使用HashRouter
 
 const PCLayout = () => {
     return <Provider store={store}>
-            <BrowserRouter>
+            <Router>
                 <div className={style['main-content-box']}>
                     <div className={style['main-layout']}>
                         <div id="nav-box-div" className={style['main-nav']}>
@@ -49,7 +49,7 @@ const PCLayout = () => {
                         </div>
                     </div>
                 </div>
-            </BrowserRouter>
+            </Router>
  </Provider>
 }
 

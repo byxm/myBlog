@@ -7,8 +7,8 @@
     left: 0;
     top: 0;
     .message-alert{
-       width: 16em;
-        height: 6em;
+        width: 16em;
+        min-height: 6em;
         margin: 0 auto;
         margin-top: calc($base-height / 2 - 7.5em);
         background-color: #fff;
@@ -21,22 +21,34 @@
             font-size: 1.3em;
             font-weight: 600;
             margin-left: .8em;
+            margin-top: .0625em;
         }
         .message-content{
             margin: 1em 0 0 2.3em;
             color: #666;
         }
-        .message-button{
-            width: 6em;
-            height:3em;
-            color: #fff;
-            background-color: rgb(64, 169, 255);
-            border-radius: 10%;
-            border: none;
-            position: absolute;
-            right: 1.5em;
-            margin-top: .5em;
-            cursor: pointer;
+        .message-btn-div{
+            @mixin baseBtnStyle($bgColor,$btnColor:#fff,$border:""){
+                width: 6em;
+                height:3em;
+                background-color: $bgColor;
+                @if $border{
+                    border: $border solid 0.0625em;
+                }
+                color: $btnColor;
+                border-radius: 10%;
+                border: none;
+                // position: absolute;
+                // right: 1.5em;
+                // margin-top: .5em;
+                cursor: pointer;
+            }
+            .message-button-confirm{
+                @include baseBtnStyle(#40A9FF, #fff)
+            }
+            .message-button-cancel{
+                @include baseBtnStyle(#fff, #000,#ccc)
+            }
         }
     }
 }
