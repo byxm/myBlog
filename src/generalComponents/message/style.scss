@@ -8,7 +8,7 @@
     top: 0;
     .message-alert{
         width: 16em;
-        min-height: 6em;
+        min-height: 4em;
         margin: 0 auto;
         margin-top: calc($base-height / 2 - 7.5em);
         background-color: #fff;
@@ -28,26 +28,36 @@
             color: #666;
         }
         .message-btn-div{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            margin: 2em 0 0 5.5em;
             @mixin baseBtnStyle($bgColor,$btnColor:#fff,$border:""){
                 width: 6em;
                 height:3em;
+                outline: none;
                 background-color: $bgColor;
                 @if $border{
                     border: $border solid 0.0625em;
+                } @else {
+                    border: none;
                 }
                 color: $btnColor;
                 border-radius: 10%;
-                border: none;
-                // position: absolute;
-                // right: 1.5em;
-                // margin-top: .5em;
                 cursor: pointer;
             }
+            $confirmColor:#40A9FF;
             .message-button-confirm{
-                @include baseBtnStyle(#40A9FF, #fff)
+                @include baseBtnStyle($confirmColor, #fff, false)
             }
             .message-button-cancel{
-                @include baseBtnStyle(#fff, #000,#ccc)
+                @include baseBtnStyle(#fff, #000,#ccc);
+                &:hover{
+                    color:$confirmColor;
+                    border: 0.0625em solid $confirmColor;
+                    transition: all .2s ease-in;
+                }
             }
         }
     }

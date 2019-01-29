@@ -5,6 +5,7 @@
     width: $logo-size;
     height: $logo-size;
     margin: 5em auto;
+    transition: transform .3s ease-in;
     img{
         width:$logo-content-size;
         height:$logo-content-size;

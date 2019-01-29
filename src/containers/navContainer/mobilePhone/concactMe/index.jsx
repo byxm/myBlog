@@ -9,8 +9,9 @@ class ConcactMe extends React.Component{
             if (isNewPage === '_self') {
                 Message.warning({
                     title:"访问提示",
-                    content:`将要访问您的手机邮手机邮手机邮手机邮手机邮手机邮箱我的邮箱：panyuximeng@163.com`,
-                    onOk:()=>{window.open(page,isNewPage)}
+                    content:`将要访问您的手机邮箱,我的邮箱：panyuximeng@163.com`,
+                    onOk:()=>{window.open(page,isNewPage)},
+                    onCancel:()=>{}
                 })
             }else {
                 window.open(page,isNewPage)

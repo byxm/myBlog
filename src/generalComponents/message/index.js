@@ -24,7 +24,12 @@ class Message {
                             </p>
                             <p className={style['message-content']}>{messageProps.content}</p>
                             <div className={style['message-btn-div']}>
-                                <button type="button" className={style['message-button-cancel']}>取消</button>
+                                {
+                                    messageProps.onCancel?<button type="button"
+                                    onClick={()=>{handleCloseMess(this.messageRef,this.boxRef,messageProps.onCancel)}}
+                                    className={style['message-button-cancel']}>取消</button>:""
+                                }
+                                &nbsp;
                                 <button onClick={()=>{handleCloseMess(this.messageRef,this.boxRef,messageProps.onOk)}} 
                                 type="button" className={style['message-button-confirm']}>知道了</button>
                             </div>
@@ -38,13 +43,13 @@ class Message {
 
 }
 
-function handleCloseMess(elemMes,eleBox,callBackOk){
+function handleCloseMess(elemMes,eleBox,callBack){
         elemMes.current.style.transform = "scale(0)";
         setTimeout(() => {
              eleBox.current.style.display = "none";
              const dom = document.getElementById('customDivBox');
              document.body.removeChild(dom);
-             callBackOk && callBackOk();
+             callBack && callBack();
         }, 250);
 }
 

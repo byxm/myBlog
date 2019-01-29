@@ -10,7 +10,8 @@ class ConcactMe extends React.Component{
                     Message.warning({
                         title:"提示",
                         content:'默认打开网易邮箱客户端',
-                        onOk:()=>{window.open(page,isNewPage)}
+                        onOk:()=>{window.open(page,isNewPage)},
+                        onCancel:()=>{}
                     })
             }else {
                 window.open(page,isNewPage)
