@@ -1,13 +1,13 @@
-import React from 'react';
+import React,{PureComponent} from 'react';
 import style from './style.scss';
 import { Link,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {getArticleTitle}  from '../../../../redux/home.redux'
 // import Pover from 'generalComponents/popverLayer'
 
-@connect(null,{getArticleTitle})
 @withRouter
-class NavItems extends React.Component{
+@connect(null,{getArticleTitle})
+class NavItems extends PureComponent{
         constructor(props){
             super(props);
             this.handleClickItem = this.handleClickItem.bind(this);
@@ -29,7 +29,7 @@ class NavItems extends React.Component{
         componentDidMount(){
             const {location:{pathname},getArticleTitle,navList} = this.props;
             const nowPathname = pathname!=="/"?pathname:"/compareTechology";
-            const currentTitle = navList.filter(i=>i.pathUrl===nowPathname)
+            const currentTitle = navList.filter(i=>i.pathUrl===nowPathname);
             this.setState({
                 isActive:nowPathname
             },()=>{
@@ -37,8 +37,20 @@ class NavItems extends React.Component{
                 getArticleTitle(label)
             })
         }
-        handleClickItem(i,label){
-           this.setState({isActive:i},()=>{
+
+        componentDidUpdate(prevProps){
+            if (JSON.stringify(prevProps) !== JSON.stringify(this.props)) {
+                    const {location} = this.props;
+                    if (location.hasOwnProperty('isJumpTo') && location.isJumpTo) {
+                            this.setState({
+                                isActive:location.pathname
+                            })
+                    }
+            }
+        }
+
+        handleClickItem(label,pathUrl){
+           this.setState({isActive:pathUrl},()=>{
                this.props.getArticleTitle(label)
            })
         }
@@ -50,10 +62,10 @@ class NavItems extends React.Component{
                 <>
                     <ul className={style['nav-item-box']}>
                         {
-                            navList.map((i,index) => <Link to={i.pathUrl}  key={i.label}>
+                            navList.map((i) => <Link to={i.pathUrl}  key={i.label}>
                                         <li 
-                                            className={style[`nav-item-list${isActive===index?"active":isActive===i.pathUrl?"active":""}`]}
-                                            onClick={() => {this.handleClickItem(index,i.label)}}
+                                            className={style[`nav-item-list${isActive===i.pathUrl?"active":""}`]}
+                                            onClick={() => {this.handleClickItem(i.label,i.pathUrl)}}
                                         >
                                         <p className={style['nav-item-flex']}>
                                             {i.icon}

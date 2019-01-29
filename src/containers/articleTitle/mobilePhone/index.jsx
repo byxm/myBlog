@@ -66,7 +66,7 @@ class ArticleTitle extends PureComponent{
           return (
               <>       
                 <div className={style['article-title']}>
-                    <h2>{this.props.user.get("articleTitle")}</h2>
+                    <h2>{this.props.user.get("articleTitle")}&nbsp;</h2>
                     <span 
                     onClick={this.handleSpreadMenu} 
                     className={`iconfont ${style['nav-menu']}`}

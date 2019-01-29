@@ -22,7 +22,7 @@ class NavItems extends React.Component{
                 {label:"生活",icon:<i className="iconfont">&#xe61b;</i>,isActive:"",pathUrl:'/myLife'},
                 {label:"荐书",icon:<i className="iconfont">&#xe809;</i>,isActive:"",pathUrl:'/recommendBook'},
                 {label:"总结",icon:<i className="iconfont">&#xe682;</i>,isActive:"",pathUrl:'/conclude'},
-                {label:"关于我",icon:<i className="iconfont">&#xe600;</i>,isActive:"",pathUrl:'/aboutMe'},
+                // {label:"关于我",icon:<i className="iconfont">&#xe600;</i>,isActive:"",pathUrl:'/aboutMe'},
             ]
         }
 

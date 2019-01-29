@@ -1,19 +1,23 @@
 import React from 'react';
 import style from './style.scss';
+import {Link} from 'react-router-dom';
 import ziyin from 'assets/images/ziyin.jpg';
 
-let myPhoto,angle = 360;
-const handleToMyHome = () =>{
-    myPhoto.style.transform = `rotate(${angle}deg)`;
-    angle += 360;
-}
+class MyPhoto extends React.Component{
+    constructor(props){
+        super(props);
+        this.myPhoto = React.createRef();
+    }
 
-const MyPhoto = () => {
-    return (
-            <div ref={node=>myPhoto=node} onClick={handleToMyHome} className={style['nav-content-logo']}>
-                <img src={ziyin} alt="紫英头像"/>
-            </div>
-    )
+    render(){
+        return (
+            <Link to="/aboutMe">
+                <div ref={this.myPhoto} className={style['nav-content-logo']}>
+                    <img src={ziyin} alt="紫英头像"/>
+                </div>
+            </Link>
+        )
+    }
 }
 
 export default MyPhoto

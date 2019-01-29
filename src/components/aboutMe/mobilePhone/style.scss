@@ -1,0 +1,28 @@
+.about-me-div{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    z-index: 999;
+    .header-box{
+        width: 100%;
+        height: 4em;
+        border-top: 0.0625em solid #ccc;
+        border-bottom: 0.0625em solid #ccc;
+        span{
+            position: absolute;
+            left: .5em;
+            font-size: 1.5em;
+            line-height: 2.5em;
+        }
+        .person-resume{
+            width: 100%;
+            font-size: 1.5em;
+            display: inline-block;
+            text-align: center;
+            line-height: 2.5em;
+        }
+    }
+}

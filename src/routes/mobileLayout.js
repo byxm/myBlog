@@ -20,6 +20,7 @@ const store = createStore(reducer,composeEnhancers(
 
 const NotFound = lazyLoad(()=>import("components/NotFound"));
 const ArticleContent = lazyLoad(()=>import("components/articleContent/mobilePhone"));
+const AboutMe  = lazyLoad(()=>import("components/aboutMe/mobilePhone"));
 
 
 const cancelMaskLayer = () => {
@@ -48,6 +49,7 @@ const MobileLayout = () => {
                                                 }
                                             )
                                         }
+                                        <Route path="/aboutMe" component={AboutMe} />
                                         <Route path="/content/:currentMenu:createTime" component={ArticleContent} />
                                         <Route exact path="/" render={()=><Redirect to="/compareTechology" />} />
                                         <Route component={NotFound} />

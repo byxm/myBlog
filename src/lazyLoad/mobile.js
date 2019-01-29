@@ -40,10 +40,10 @@ const routerConfig = [
         pathUrl:'/conclude',
         component:ArticleTitle
     },
-    {
-        pathUrl:'/aboutMe',
-        component:ArticleTitle
-    }
+    // {
+    //     pathUrl:'/aboutMe',
+    //     component:ArticleTitle
+    // }
 ]
 
 

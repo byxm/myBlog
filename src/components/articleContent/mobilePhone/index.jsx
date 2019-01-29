@@ -59,17 +59,17 @@ class ArticleContent extends React.Component{
 
         handleBackTop(){
             const step = 7;
-        this.timer = requestAnimationFrame(function fn(){
-                if(this.scrollTop>0){
-                    const scrollNum = Math.floor(this.scrollTop / step);
-                    this.scrollTop -= scrollNum;
-                    this.contentBox.current.scrollTo(0,scrollNum);
-                    this.timer = requestAnimationFrame(fn.bind(this));
-                }else {
-                    this.contentBox.current.scrollTo(0,0)
-                    cancelAnimationFrame(this.timer);
-                }
-        }.bind(this))
+            this.timer = requestAnimationFrame(function fn(){
+                    if(this.scrollTop>0){
+                        const scrollNum = Math.floor(this.scrollTop / step);
+                        this.scrollTop -= scrollNum;
+                        this.contentBox.current.scrollTo(0,scrollNum);
+                        this.timer = requestAnimationFrame(fn.bind(this));
+                    }else {
+                        this.contentBox.current.scrollTo(0,0)
+                        cancelAnimationFrame(this.timer);
+                    }
+            }.bind(this))
         }
 
         render(){
