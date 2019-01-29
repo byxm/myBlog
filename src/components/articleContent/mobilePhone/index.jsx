@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import httpAjax from 'httpAjax';
-import style from './style.scss';
+import style from './style.scss'
+import CopyRight from 'components/copyRight';
 
 
 @connect(state=>({user:state.get('user')}))
@@ -165,6 +166,7 @@ class ArticleContent extends React.Component{
                             2016.01.18至今，作为一名Senior Engineer就职于一家新西兰公司（Catalyst IT）的云计算部门。Catalyst是一家基于开源软件的本地IT企业，有着自由、开放的公司文化，我很喜欢。
                             联系方式：
                         </p>
+                        <CopyRight/>
                     </div>
                     <p onClick={this.handleBackTop} ref={this.backToBtn} className={`${style['back-top']} iconfont`}>&#xe71a;</p>
                 </div>
