@@ -1,8 +1,12 @@
+const fs = require('fs');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config');
 const path = require('path');
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const bundleConfig = require("../bundle-config.json");
+
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -20,11 +24,9 @@ const webpackConfigProd = {
                     root:path.resolve(__dirname,'../')
                 }),
                 new UglifyjsPlugin({
-                    test: /\.jsx?/,
-                    include: path.resolve(__dirname,'../src'),
+                    test:  /\.js($|\?)/i,
                     exclude: /node_modules/,
                     cache: true,
-                    sourceMap: true,
                     uglifyOptions: {
                         ie8: true
                     }

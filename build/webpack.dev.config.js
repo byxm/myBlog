@@ -1,8 +1,11 @@
+const fs = require('fs');
 const path = require('path');
 const common = require('./webpack.common.config');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const bundleConfig = require("../bundle-config.json");
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -21,7 +24,7 @@ module.exports = merge(common,{
         compress:true,
         hot:true,
         inline:true,
-        open:true,
+        open:false,
         openPage:"",
         publicPath:"/",
         progress:true,
@@ -33,6 +36,12 @@ module.exports = merge(common,{
     mode:'development',
     plugins:[
         new CleanWebpackPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        //   new HtmlWebpackPlugin({
+        //     title:"席梦的个人博客",
+        //     template:path.resolve(__dirname,'../public/index.html'),
+        //     filename:'index.html',
+        //     favicon:path.resolve(__dirname,'../public/ziyin.ico')
+        // }),
     ]
 })

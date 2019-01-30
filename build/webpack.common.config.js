@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const TerserPlugin = require("terser-webpack-plugin");
 const SafeParser = require("postcss-safe-parser");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// const manifest = require('../static/vendor-manifest.json');
 
 // const evn = process.argv.pop();//获取当前环境，生产或开发
 const isDev = process.env.NODE_ENV !== 'production';
@@ -172,19 +173,23 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV)//设置生产环境的环境变量NODE_ENV
         }),
-        new HtmlWebpackPlugin({
-            title:"my blog",
-            template:path.resolve(__dirname,'../public/index.html'),
-            filename:'index.html'
-        }),
-        new MiniCssExtractPlugin({
+        new MiniCssExtractPlugin({//提取公共CSS，其余页面CSS分模块打包
             filename:isDev ? "[name].[hash].css" : "[name].css",
             chunkFilename:isDev ? "[id].[hash].css" : "[id].css" 
         }),
         new webpack.SourceMapDevToolPlugin({
             filename:'[name].js.map',
             exclude:['vendor.js']
-        })
+        }),
+        new webpack.DllReferencePlugin({//关联dll生成的vendor-manifest.json 
+            context:path.join(__dirname,'static'),
+            manifest:require('../static/vendor-mainfest.json')
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.resolve(__dirname,'../public/index.html'),
+            favicon:path.resolve(__dirname,'../public/ziyin.ico')
+          })
         
     ]
 }
