@@ -1,21 +1,10 @@
-const fs = require('fs');
 const path = require('path');
 const common = require('./webpack.common.config');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const bundleConfig = require("../bundle-config.json");
-
-const isDev = process.env.NODE_ENV !== 'production';
 
 module.exports = merge(common,{
-     output:{
-        path:path.resolve(__dirname,'../dist'),
-        chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
-        filename:isDev  ? '[name].[hash].js' : '[name].js',
-        publicPath:"/",
-    },
     devtool:'cheap-module-eval-source-map',//将错误代码映射到行，开发模式下推荐使用
     devServer:{
         host:"0.0.0.0",
@@ -37,11 +26,5 @@ module.exports = merge(common,{
     plugins:[
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        //   new HtmlWebpackPlugin({
-        //     title:"席梦的个人博客",
-        //     template:path.resolve(__dirname,'../public/index.html'),
-        //     filename:'index.html',
-        //     favicon:path.resolve(__dirname,'../public/ziyin.ico')
-        // }),
     ]
 })

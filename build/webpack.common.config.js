@@ -5,7 +5,8 @@ const webpack = require('webpack');
 const TerserPlugin = require("terser-webpack-plugin");
 const SafeParser = require("postcss-safe-parser");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-// const manifest = require('../static/vendor-manifest.json');
+// const manifest = require('../static/vendor-mainfest.json');
+const bundleConfig = require("../bundle-config.json")
 
 // const evn = process.argv.pop();//获取当前环境，生产或开发
 const isDev = process.env.NODE_ENV !== 'production';
@@ -24,12 +25,12 @@ module.exports = {
         "@babel/polyfill",
         path.resolve(__dirname,'../public/index.html')
     ],
-    // output:{
-    //     path:path.resolve(__dirname,'../dist'),
-    //     chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
-    //     filename:isDev  ? '[name].[hash].js' : '[name].js',
-    //     publicPath:"/",
-    // },
+    output:{
+        path:path.resolve(__dirname,'../dist'),
+        chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
+        filename:isDev  ? '[name].[hash].js' : '[name].js',
+        publicPath:isDev?"/":"./",
+    },
     resolve:{
         extensions:['.js','.jsx','.css','.json'],
         alias:{
@@ -102,12 +103,25 @@ module.exports = {
                 ]
             },
             {
-                test:/\.(jpg|png|gif|bmp|svg|ico)$/,
-                loader:'file-loader'
+                test:/\.(jpg|png|gif|bmp|svg)$/,
+                use:[
+                    {
+                        loader:'file-loader',
+                        options:{
+                            limit:10000,
+                            name:'[path][name].[ext]'
+                        }
+                    },
+                    'image-webpack-loader' //压缩图片，暂不启用参数指定大小使用默认压缩算法
+                ]
             },
             {
                 test:/\.(woff|woff2|eot|ttf|otf)$/,
-                loader:'file-loader'
+                loader:'file-loader',
+                options:{
+                    limit:10000,
+                    name:'[path][name].[ext]'
+                }
             }
         ]
     },
@@ -187,8 +201,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
+            inject:true,
             template: path.resolve(__dirname,'../public/index.html'),
-            favicon:path.resolve(__dirname,'../public/ziyin.ico')
+            favicon:path.resolve(__dirname,'../public/ziyin.ico'),
+            vendorJsName: bundleConfig.vendor.js,
           })
         
     ]

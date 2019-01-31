@@ -1,22 +1,10 @@
-const fs = require('fs');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config');
 const path = require('path');
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const bundleConfig = require("../bundle-config.json");
-
-
-const isDev = process.env.NODE_ENV !== 'production';
 
 const webpackConfigProd = {
-            output:{
-                path:path.resolve(__dirname,'../dist'),
-                chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
-                filename:isDev  ? '[name].[hash].js' : '[name].js',
-                publicPath:"./",
-            },
             devtool:'none',
             mode:'production',
             plugins:[
