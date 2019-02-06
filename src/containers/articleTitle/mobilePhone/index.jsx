@@ -63,6 +63,7 @@ class ArticleTitle extends PureComponent{
 
       render(){
           const {match} = this.props;
+          console.log(match);
           return (
               <>       
                 <div className={style['article-title']}>
@@ -77,7 +78,10 @@ class ArticleTitle extends PureComponent{
                 <ul ref={this.currentRef} className={style['article-title-content']}>
                     {
                         this.state.navData.map((i,index)=>
-                            <Link  key={i.contentIndex} to={`/content${match.url}/${i.id}`}>
+                            <Link  key={i.contentIndex} 
+                            to={
+                            {pathname:'/content',search:`?currentMenu=${match.url}&currentIndex=${i.id}`,query: {currentMenu:match.url,currentIndex:i.id}}
+                            }>
                                 <li
                                     className={style[`title-desc${index===this.state.currentTitle?"active":""}`]}
                                     onClick={()=>{this.handleArticleTitle(index,i.title)}}

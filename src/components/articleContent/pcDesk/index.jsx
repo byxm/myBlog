@@ -1,7 +1,9 @@
 import React from 'react';
 import style from './style.scss';
 import CopyRight from 'components/copyRight';
+import {connect} from 'react-redux';
 
+@connect(state=>({user:state.get('user')}))
 class ArticleContent extends React.Component{
     constructor(props){
         super(props);
@@ -18,7 +20,21 @@ class ArticleContent extends React.Component{
         this.contentBox.current.addEventListener('scroll',()=>{
             this.throttle(this.handleScroll,this)
         });
+        
     }
+
+    componentWillUnmount(){
+        this.contentBox.current.removeEventListener('scroll',()=>{});
+    }
+
+    shouldComponentUpdate(nextProps){
+        if(this.props.user.get('articleContent') !== nextProps.user.get('articleContent')){
+                return true;
+        }else {
+                return false;
+        }
+    }
+
 
     throttle(method,context){//节流函数
         clearTimeout(method.tId);
@@ -77,6 +93,7 @@ class ArticleContent extends React.Component{
             setTimeout(()=>{
                 navContentBox.style.display = 'none';
                 titleBox.style.display = 'none';
+                this.contentBox.current.style.padding = "1.5em 10em 10em 10em";
             },100)
             this.changeSize = !this.changeSize;
         }else {
@@ -88,6 +105,7 @@ class ArticleContent extends React.Component{
             setTimeout(()=>{
                 navContentBox.style.display = 'block';
                 titleBox.style.display = 'block';
+                this.contentBox.current.style.padding = "1.5em";
             },200)
             this.changeSize = !this.changeSize;
         }
@@ -95,9 +113,11 @@ class ArticleContent extends React.Component{
 
 
     render(){
+            const {user} = this.props;
             return  <div ref={this.contentBox}  className={style['article-box']}>
-                <p>
-                </p>
+                <h2 className={style['article-title']}>{user.get('articleContent')?user.get('articleContent').articleTitle:""}</h2>
+                <div className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
+                </div>
                 <p onClick={this.handleBackTop} ref={this.backToBtn} className={`${style['back-top']} iconfont`}>&#xe71a;</p>
                 <p ref={this.shrinkBtn} onClick={this.handleShrinkWeb} className={`${style['shrink-web-btn']} iconfont`}>&#xe61f;</p>
                 <CopyRight/>

@@ -1,11 +1,11 @@
 import React,{PureComponent} from 'react';
 import httpAjax from 'httpAjax';
 import {connect} from 'react-redux';
-import {getWebTitle} from '../../../redux/home.redux'
+import {getWebTitle,getArticleContent} from '../../../redux/home.redux'
 import style from './style.scss';
 
 
-@connect(state=>({user:state.get('user')}),{getWebTitle})
+@connect(state=>({user:state.get('user')}),{getWebTitle,getArticleContent})
 class ArticleTitle extends PureComponent{
       constructor(props){
             super(props);
@@ -24,10 +24,17 @@ class ArticleTitle extends PureComponent{
                 "/conclude":"/concludeInfo",
                 "/aboutMe":"/myPersonInfo"
             },
+            articleContent:{
+                "/compareTechology":"/jishuContent",
+                "/myLife":"/lifeContent",
+                "/recommendBook":"/bookContent",
+                "/conclude":"/concludeContent",
+                "/aboutMe":"/meContent"
+            }
       }
 
       componentDidMount(){
-           const {location:{pathname},navAjaxApi} = this.props;
+           const {location:{pathname},navAjaxApi,articleContent} = this.props;
             httpAjax.ajax(navAjaxApi[pathname]).then(res=>{
                     this.setState({
                         navData:res.data
@@ -37,6 +44,12 @@ class ArticleTitle extends PureComponent{
                     })
                     this.props.getWebTitle(res.data[0].title);
                     document.title = this.props.user.get("webTitle");
+            }).then(()=>{
+                httpAjax.ajax(articleContent[pathname] + '?contentId=0').then(res=>{
+                    this.props.getArticleContent(res.data.data);
+                    }).catch(err=>{
+                        console.error(err);
+                    })
             }).catch(err=>{
                 this.currentRef.current.style.paddingTop = 0;
                 console.error(err);
@@ -44,9 +57,10 @@ class ArticleTitle extends PureComponent{
       }
       
       handleArticleTitle(currentIndex,title){
+          const {location:{pathname},articleContent} = this.props;
             document.title = title;
-            httpAjax.ajax('/articleContent?name=1').then(res=>{
-                    console.log(res.data);
+            httpAjax.ajax(articleContent[pathname] + '?contentId='+currentIndex+'').then(res=>{
+                     this.props.getArticleContent(res.data.data);
             }).catch(err=>{
                 console.error(err);
             })

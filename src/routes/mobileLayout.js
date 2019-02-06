@@ -50,7 +50,7 @@ const MobileLayout = () => {
                                             )
                                         }
                                         <Route path="/aboutMe" component={AboutMe} />
-                                        <Route path="/content/:currentMenu:createTime" component={ArticleContent} />
+                                        <Route path="/content" component={ArticleContent} />
                                         <Route exact path="/" render={()=><Redirect to="/compareTechology" />} />
                                         <Route component={NotFound} />
                                     </Switch>

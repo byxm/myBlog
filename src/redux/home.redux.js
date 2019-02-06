@@ -6,11 +6,13 @@ const GET_ARTICLE_TITLE = "get_article_title";
 const GET_WEB_TITLE = "get_web_title";
 const GET_CURRENT_INDEX = 'get_current_index';
 const GET_PATH_URL = 'get_path_url';
+const GET_ARTICLE_CONTENT = 'get_article_content';
 
 const $$initState = fromJS({
     webTitle:"",
     articleTitle:'',
     articleList:[],
+    articleContent:'',
     currentIndex:"",
     pathUrl:""
 })
@@ -33,6 +35,8 @@ export const getPathUrl = (pathUrl) => {
     return {type:GET_PATH_URL,pathUrl}
 }
 
+export const getArticleContent = (articleContent) => ({type:GET_ARTICLE_CONTENT,articleContent})
+
 export default (state=$$initState,action) => {
         switch (action.type) {
             case GET_ARTICLE_TITLE:
@@ -42,7 +46,9 @@ export default (state=$$initState,action) => {
             case GET_CURRENT_INDEX:
                 return state.set("currentIndex",action.currentIndex);
             case GET_PATH_URL:
-                return state.set("pathUrl",action.pathUrl).set("articleTitle","关于我")
+                return state.set("pathUrl",action.pathUrl).set("articleTitle","关于我");
+            case GET_ARTICLE_CONTENT:
+                return state.set('articleContent',action.articleContent)
             default:
                 return state
         }

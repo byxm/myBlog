@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MediaQuery from 'react-responsive';
 import PCLayout from './pcLayout';
-import MobileLayout from './mobileLayout'
+import MobileLayout from './mobileLayout';
 
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -15,7 +15,6 @@ import MobileLayout from './mobileLayout'
 
 
 ReactDOM.render(
-
         <div>
             <MediaQuery query="(min-device-width:1224px)">
                     <PCLayout />
@@ -24,8 +23,6 @@ ReactDOM.render(
                     <MobileLayout />
             </MediaQuery>
         </div>,
-
-
     // <Provider store={store}>
     //     <BrowserRouter>
     //         <div className={style['main-content-box']}>

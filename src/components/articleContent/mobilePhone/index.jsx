@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import httpAjax from 'httpAjax';
-import style from './style.scss'
+import style from './style.scss';
+import {getArticleContent} from '../../../redux/home.redux'
 import CopyRight from 'components/copyRight';
 
 
-@connect(state=>({user:state.get('user')}))
+@connect(state=>({user:state.get('user')}),{getArticleContent})
 class ArticleContent extends React.Component{
         constructor(props){
             super(props);
@@ -16,14 +17,41 @@ class ArticleContent extends React.Component{
             this.timer = null;
         }
 
+        static defaultProps = {
+            articleContent:{
+                "/compareTechology":"/jishuContent",
+                "/myLife":"/lifeContent",
+                "/recommendBook":"/bookContent",
+                "/conclude":"/concludeContent",
+                "/aboutMe":"/meContent"
+            }
+        }
+
         componentDidMount(){
-            httpAjax.ajax('/articleContent?name=0').then(()=>{
+            let {location:{search},articleContent} = this.props;
+            const params = this.getUrlParams(search);
+            httpAjax.ajax(articleContent[params.currentMenu] + '?contentId='+params.currentIndex+'').then((res)=>{
+                this.props.getArticleContent(res.data.data);
             }).catch(err=>{
                 console.error(err);
             })
              this.contentBox.current.addEventListener('scroll',()=>{
                 this.throttle(this.handleScroll,this)
             });
+        }
+
+        getUrlParams(url){
+            const params = {};
+            const urlParams = url.substring(1).split('&');
+            urlParams.forEach(i=>{
+                const newParams = i.split('=');
+                params[newParams[0]] = newParams[1];
+            })
+            return params;
+        }
+
+        componentWillUnmount(){
+            this.contentBox.current.removeEventListener('scroll',()=>{});
         }
 
         handleBackTitle(){
@@ -74,6 +102,7 @@ class ArticleContent extends React.Component{
         }
 
         render(){
+            const { user }  = this.props;
             return (
                 <div className={style['content-box']}>
                     <div className={style['content-header-title']}>
@@ -81,9 +110,8 @@ class ArticleContent extends React.Component{
                             <p className={style['title-word']}>{this.props.user.get("webTitle")}</p>
                     </div>
                     <div ref={this.contentBox} className={style['content-innner']}>
-                            <p>
-                            
-                        </p>
+                            <div className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
+                    </div>
                         <CopyRight/>
                     </div>
                     <p onClick={this.handleBackTop} ref={this.backToBtn} className={`${style['back-top']} iconfont`}>&#xe71a;</p>
