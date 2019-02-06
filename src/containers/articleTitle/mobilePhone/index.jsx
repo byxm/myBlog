@@ -63,7 +63,6 @@ class ArticleTitle extends PureComponent{
 
       render(){
           const {match} = this.props;
-          console.log(match);
           return (
               <>       
                 <div className={style['article-title']}>
