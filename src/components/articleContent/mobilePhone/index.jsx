@@ -32,6 +32,9 @@ class ArticleContent extends React.Component{
             const params = this.getUrlParams(search);
             httpAjax.ajax(articleContent[params.currentMenu] + '?contentId='+params.currentIndex+'').then((res)=>{
                 this.props.getArticleContent(res.data.data);
+            }).then(()=>{
+                this.contentBox.current.style.marginTop = "0";
+                this.contentBox.current.style.opacity = "1";
             }).catch(err=>{
                 console.error(err);
             })
