@@ -66,28 +66,21 @@
 // var obj = {name:'simone',age:22};//定义普通对象
 // var arr = [];//定义数组对象
 // var funObj = function(){};//定义函数对象
-
+// const $ = 0;
 // //可以任意给引用类型添加属性
 // obj.sex = '男';
 // arr.index = 0;
 // funObj.names = 'simone';
 
+function conso(i){
+    console.log(i);
+}
 
-var obj = new Object();
-obj.name = 'simone';
-obj.age = 22;
-var arr = new Array();
-arr[0] = 1;
-arr[1] = 2;
-var funObj = new Function();
-funObj.names = 'simone';
-console.log(obj,arr,funObj);
-
-
-
-
-
-
+for(let i = 0;i < 10;i++){
+    setTimeout(function(){
+        console.log(i)
+    }, 1000);
+}
 
 
 

@@ -1,0 +1,26 @@
+.spin-box{
+    height: 100%;
+    position: relative;
+   .spin-loading{
+       width: 100%;
+       height: 100%;
+       background-color: rgba(255,255,255,.5);
+       position: absolute;
+       left: 0;
+       top: 0;
+       .spin-img{
+           text-align: center;
+           margin-top: calc(50% - 1em);
+       }
+       .spin-text{
+           text-align: center;
+           color: #6DCAF8;
+       }
+   }
+    .spin-img-none{
+        display: none;
+    }
+    .spin-text-none{
+        display: none;
+    }
+}

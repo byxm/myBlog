@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './style.scss';
 import CopyRight from 'components/copyRight';
+import Spin from 'generalComponents/Spin';
 import {connect} from 'react-redux';
 
 @connect(state=>({user:state.get('user')}))
@@ -19,8 +20,7 @@ class ArticleContent extends React.Component{
     componentDidMount(){
         this.contentBox.current.addEventListener('scroll',()=>{
             this.throttle(this.handleScroll,this)
-        });
-        
+        });    
     }
 
     componentWillUnmount(){
@@ -28,7 +28,12 @@ class ArticleContent extends React.Component{
     }
 
     shouldComponentUpdate(nextProps){
-        if(this.props.user.get('articleContent') !== nextProps.user.get('articleContent')){
+        const {user} = this.props;
+        if(
+            user.get('articleContent') !== nextProps.user.get('articleContent') || 
+            user.get('isLoading') !== nextProps.user.get('isLoading')
+        )
+        {
                 return true;
         }else {
                 return false;
@@ -114,14 +119,16 @@ class ArticleContent extends React.Component{
 
     render(){
             const {user} = this.props;
-            return  <div ref={this.contentBox}  className={style['article-box']}>
-                <h2 className={style['article-title']}>{user.get('articleContent')?user.get('articleContent').articleTitle:""}</h2>
-                <div className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
-                </div>
-                <p onClick={this.handleBackTop} ref={this.backToBtn} className={`${style['back-top']} iconfont`}>&#xe71a;</p>
-                <p ref={this.shrinkBtn} onClick={this.handleShrinkWeb} className={`${style['shrink-web-btn']} iconfont`}>&#xe61f;</p>
-                <CopyRight/>
-        </div>
+            return  <Spin loading={user.get('isLoading')} tip="博客内容获取中...">
+                    <div ref={this.contentBox}  className={style['article-box']}>
+                        <h2 className={style['article-title']}>{user.get('articleContent')?user.get('articleContent').articleTitle:""}</h2>
+                        <div className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
+                        </div>
+                        <CopyRight/>
+                        <p onClick={this.handleBackTop} ref={this.backToBtn} className={`${style['back-top']} iconfont`}>&#xe71a;</p>
+                        <p ref={this.shrinkBtn} onClick={this.handleShrinkWeb} className={`${style['shrink-web-btn']} iconfont`}>&#xe61f;</p>
+                        </div>
+                    </Spin>
            
     }
 }

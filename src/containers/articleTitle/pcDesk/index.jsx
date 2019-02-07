@@ -1,11 +1,11 @@
 import React,{PureComponent} from 'react';
 import httpAjax from 'httpAjax';
 import {connect} from 'react-redux';
-import {getWebTitle,getArticleContent} from '../../../redux/home.redux'
+import {getWebTitle,getArticleContent,getLoadingInfo} from '../../../redux/home.redux'
 import style from './style.scss';
 
 
-@connect(state=>({user:state.get('user')}),{getWebTitle,getArticleContent})
+@connect(state=>({user:state.get('user')}),{getWebTitle,getArticleContent,getLoadingInfo})
 class ArticleTitle extends PureComponent{
       constructor(props){
             super(props);
@@ -35,12 +35,14 @@ class ArticleTitle extends PureComponent{
 
       componentDidMount(){
            const {location:{pathname},navAjaxApi,articleContent} = this.props;
+           this.props.getLoadingInfo(true);
             httpAjax.ajax(navAjaxApi[pathname]).then(res=>{
                     this.setState({
                         navData:res.data
                     },()=>{
                         this.currentRef.current.style.opacity = 1;
                         this.currentRef.current.style.marginTop = 0;
+                        this.props.getLoadingInfo(false);
                     })
                     this.props.getWebTitle(res.data[0].title);
                     document.title = this.props.user.get("webTitle");
@@ -57,10 +59,12 @@ class ArticleTitle extends PureComponent{
       }
       
       handleArticleTitle(currentIndex,title){
+          this.props.getLoadingInfo(true);//加载loading动画
           const {location:{pathname},articleContent} = this.props;
             document.title = title;
             httpAjax.ajax(articleContent[pathname] + '?contentId='+currentIndex+'').then(res=>{
                      this.props.getArticleContent(res.data.data);
+                     this.props.getLoadingInfo(false);//取消loading动画
             }).catch(err=>{
                 console.error(err);
             })

@@ -3,7 +3,9 @@
     overflow-y: auto;
     padding: 1.5em;
     box-sizing: border-box;
-    transition: opacity .5s,margin-top .5s ease-in;
+    img{
+        width: 100%;
+    }
     .article-title{
         text-align: center;
         font-size: 1.5em;

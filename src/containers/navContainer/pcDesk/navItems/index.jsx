@@ -2,7 +2,8 @@ import React,{PureComponent} from 'react';
 import style from './style.scss';
 import { Link,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {getArticleTitle}  from '../../../../redux/home.redux'
+import {getArticleTitle}  from '../../../../redux/home.redux';
+
 // import Pover from 'generalComponents/popverLayer'
 
 @withRouter
@@ -59,24 +60,22 @@ class NavItems extends PureComponent{
             const {navList} = this.props;
             const {isActive} = this.state;
             return (
-                <>
-                    <ul className={style['nav-item-box']}>
-                        {
-                            navList.map((i) => <Link to={i.pathUrl}  key={i.label}>
-                                        <li 
-                                            className={style[`nav-item-list${isActive===i.pathUrl?"active":""}`]}
-                                            onClick={() => {this.handleClickItem(i.label,i.pathUrl)}}
-                                        >
-                                        <p className={style['nav-item-flex']}>
-                                            {i.icon}
-                                            <span>{i.label}</span> 
-                                        </p>
-                                    </li>
-                            </Link>
-                            )
-                        }
-                        </ul>
-                </>
+                <ul className={style['nav-item-box']}>
+                    {
+                        navList.map((i) => <Link to={i.pathUrl}  key={i.label}>
+                                    <li 
+                                        className={style[`nav-item-list${isActive===i.pathUrl?"active":""}`]}
+                                        onClick={() => {this.handleClickItem(i.label,i.pathUrl)}}
+                                    >
+                                    <p className={style['nav-item-flex']}>
+                                        {i.icon}
+                                        <span>{i.label}</span> 
+                                    </p>
+                                </li>
+                        </Link>
+                        )
+                    }
+                </ul>
             )
         }
 }
