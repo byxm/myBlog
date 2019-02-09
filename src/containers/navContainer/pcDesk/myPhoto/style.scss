@@ -1,10 +1,10 @@
 .nav-content-logo{
     font-size: 0.75em;
-    $logo-size:9.375em;
+    $logo-size:11em;
     $logo-content-size:100%;
     width: $logo-size;
     height: $logo-size;
-    margin: 5em auto;
+    margin: 6em auto;
     transition: transform .3s ease-in;
     cursor: pointer;
     img{

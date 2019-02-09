@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './style.scss';
 import {withRouter} from 'react-router-dom';
-import ziyin from 'assets/images/ziyin.jpg';
+import panyu from 'assets/images/panyu.jpg';
 import {connect} from 'react-redux';
 import {getPathUrl} from '../../../../redux/home.redux'
 
@@ -30,7 +30,7 @@ class MyPhoto extends React.Component{
     render(){
         return (
                 <div ref={this.myPhoto} onClick={this.handleToMyHome} className={style['nav-content-logo']}>
-                    <img src={ziyin} alt="紫英头像"/>
+                    <img src={panyu} alt="紫英头像"/>
                 </div>
         )
     }

@@ -72,16 +72,7 @@
 // arr.index = 0;
 // funObj.names = 'simone';
 
-function conso(i){
-    console.log(i);
-}
-
-for(let i = 0;i < 10;i++){
-    setTimeout(function(){
-        console.log(i)
-    }, 1000);
-}
-
+console.log(Date.now());
 
 
 
