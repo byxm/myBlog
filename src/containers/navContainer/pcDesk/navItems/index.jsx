@@ -19,7 +19,7 @@ class NavItems extends PureComponent{
 
         static defaultProps = {
             navList:[
-                {label:"技术",icon:<i className="iconfont">&#xe604;</i>,isActive:"",pathUrl:'/compareTechology'},
+                {label:"前端",icon:<i className="iconfont">&#xe604;</i>,isActive:"",pathUrl:'/compareTechology'},
                 {label:"生活",icon:<i className="iconfont">&#xe61b;</i>,isActive:"",pathUrl:'/myLife'},
                 {label:"荐书",icon:<i className="iconfont">&#xe809;</i>,isActive:"",pathUrl:'/recommendBook'},
                 {label:"总结",icon:<i className="iconfont">&#xe682;</i>,isActive:"",pathUrl:'/conclude'},
