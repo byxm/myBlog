@@ -1,6 +1,7 @@
 .about-me-div{
+    $baseHeight:100vh;
     width: 100vw;
-    height: 100vh;
+    height: $baseHeight;
     position: relative;
     left: 0;
     top: 0;
@@ -23,6 +24,21 @@
             display: inline-block;
             text-align: center;
             line-height: 2.5em;
+        }
+    }
+    .about-content{
+        height: calc($baseHeight - 4.375em);
+        overflow-y: auto;
+        margin-top: -1em;
+        opacity: 0;
+        $time:.5s;
+        transition: margin-top $time,opacity $time ease-in;
+        .about-content-inner{
+            padding: 1em 1.5em 1.5em 1.5em;
+            line-height: 1.7em;
+            img{
+                width: 100%;
+            }        
         }
     }
 }
