@@ -1,9 +1,9 @@
 #  席梦的个人博客
 这是我制作的个人博客的开源项目。主要使用react+redux+webpack技术栈进行开发,对应工程化前端开发规范，适配移动端与PC端，以下是项目的简介。
 
-![PC端页面](http://img.027cgb.com/615103/simoneBlog.png)
+![PC端页面](http://i1.bvimg.com/676577/abe952dc5824452f.png)
 ------
-![移动端页面](http://img.027cgb.com/615103/simoneMobile.png)
+![移动端页面](http://i1.bvimg.com/676577/95863c290f1dfa42.png)
 
 - 预览：https://byxm.github.io/blogOnline
 
@@ -33,7 +33,7 @@
 ```
 
 ## 说明
-我的这个项目从构建，开发，打包上线均由本人独立完成。环境构建使用webpack4.28.2版本从零构建，包含[开发环境和生产环境配置](https://github.com/byxm/myBlog/tree/master/build)。项目开发采用react16.7.0版本，搭配redux做状态管理，也是用了一点主流的[immutablejs](https://github.com/byxm/myBlog/blob/master/src/redux/home.redux.js)数据结构搭配redux，使用组件化开发的思想将页面的各个功能块拆分的尽量细致。在css预编译语言方面采用了sass进行开发，独立cssmodules避免样式的冲突，符合前端模块化开发的规范。数据交互使用[easy-mock](https://www.easy-mock.com/login)进行模拟，数据请求都是真实的。整体交互比较简单，尽量将自己现在所学的东西综合在里面，对自己的技术成长有了很大的帮助。项目本身还存在很多未能解决的问题，非常欢迎您的指点，一起学习进步。
+我的这个项目从构建，开发，打包上线均由本人独立完成。环境构建使用webpack4.28.2版本从零构建，包含[开发环境和生产环境配置](https://github.com/byxm/myBlog/tree/master/build)。项目开发采用react16.7.0版本，搭配redux做状态管理，也是用了一点主流的[immutablejs](https://github.com/byxm/myBlog/blob/master/src/redux/home.redux.js)数据结构搭配redux，使用组件化开发的思想将页面的各个功能块拆分的尽量细致。在css预编译语言方面采用了sass进行开发，独立cssmodules避免样式的冲突，符合前端模块化开发的规范。数据交互使用[easy-mock](https://www.easy-mock.com/login)进行模拟，数据请求都是真实的。整体交互比较简单，尽量将自己现在所学的东西综合在里面，对自己的技术成长有了很大的帮助。博客页面UI参考了[这位大神的](https://lingxiankong.github.io/)。 项目本身还存在很多未能解决的问题，非常欢迎您的指点，一起学习进步。
 
 
 
