@@ -19,10 +19,12 @@ class Spin extends React.Component{
             <div className={style['spin-box']}>
                 {this.props.children}
                 <div className={style[`${loading?'spin-loading':''}`]}>
-                    <p className={style[`${loading?'spin-img':'spin-img-none'}`]}>
-                        <img src={loadingPic} />
-                    </p>
-                    <p className={style[`${loading?'spin-text':'spin-text-none'}`]}>{tip?tip:''}</p>
+                    <div className={style['spin-inner-box']}>
+                        <p className={style[`${loading?'spin-img':'spin-img-none'}`]}>
+                            <img src={loadingPic} />
+                        </p>
+                        <p className={style[`${loading?'spin-text':'spin-text-none'}`]}>{tip?tip:''}</p>
+                    </div>
                 </div>
             </div>
         )

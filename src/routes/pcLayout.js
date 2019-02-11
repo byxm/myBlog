@@ -26,7 +26,7 @@ const Router = process.env.NODE_ENV === "development" ? BrowserRouter : HashRout
 
 const PCLayout = () => {
     return <Provider store={store}>
-            <Router>
+            <Router>                
                 <div className={style['main-content-box']}>
                     <div className={style['main-layout']}>
                         <div id="nav-box-div" className={style['main-nav']}>
@@ -51,7 +51,7 @@ const PCLayout = () => {
                                 <ArticleContent/>
                         </div>
                     </div>
-                </div>
+                </div>                
             </Router>
  </Provider>
 }

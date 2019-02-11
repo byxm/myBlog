@@ -8,13 +8,17 @@
        position: absolute;
        left: 0;
        top: 0;
-       .spin-img{
-           text-align: center;
-           margin-top: calc(50% - 1em);
-       }
-       .spin-text{
-           text-align: center;
-           color: #6DCAF8;
+       .spin-inner-box{
+        position: absolute;
+        top: calc(50% - 1em);
+        left: 50%;
+        .spin-img{
+            text-align: center;
+        }
+        .spin-text{
+            text-align: center;
+            color: #6DCAF8;
+        }
        }
    }
     .spin-img-none{
