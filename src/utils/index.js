@@ -8,3 +8,10 @@ export const cancelMaskerLayer = (flex,navWidth,mask) => {
             }, 50);
             nav.style.flex = flex;
 }
+
+export const proxyEvent = (e,proxyElem,fn) => {//事件代理,根据元素类型代理相应的事件
+        e.preventDefault();
+        if(e.target.matches(proxyElem)){
+                fn.call(e.target,e);
+        }
+}

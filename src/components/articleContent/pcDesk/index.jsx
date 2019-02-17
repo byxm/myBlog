@@ -48,6 +48,10 @@ class ArticleContent extends React.Component{
         },500)
     }
 
+    componentDidUpdate(){
+        this.handleBackTop();//重新加载新的博客内容的时候重新回到博客顶部
+    }
+
 
     handleScroll(){
         this.scrollTop  = this.contentBox.current.scrollTop;  //滚动条滚动高度
@@ -70,6 +74,7 @@ class ArticleContent extends React.Component{
     }
 
     handleBackTop(){
+        debugger;
         const step = 7;
        this.timer = requestAnimationFrame(function fn(){
             if(this.scrollTop>0){
@@ -119,7 +124,8 @@ class ArticleContent extends React.Component{
 
     render(){
             const {user} = this.props;
-            return  <Spin loading={user.get('isLoading')} tip="博客内容获取中...">
+            return  (
+                <Spin loading={user.get('isLoading')} tip="博客内容获取中...">
                     <div ref={this.contentBox}  className={style['article-box']}>
                         <h2 className={style['article-title']}>{user.get('articleContent')?user.get('articleContent').articleTitle:""}</h2>
                         <div className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
@@ -129,7 +135,8 @@ class ArticleContent extends React.Component{
                         <p ref={this.shrinkBtn} onClick={this.handleShrinkWeb} className={`${style['shrink-web-btn']} iconfont`}>&#xe61f;</p>
                         </div>
                     </Spin>
-           
+
+            )           
     }
 }
 
