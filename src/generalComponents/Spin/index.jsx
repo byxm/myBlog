@@ -3,6 +3,10 @@ import style from './style.scss';
 import PropTypes from 'prop-types';
 import loadingPic from 'assets/images/loading.gif';
 
+/**
+ * 目前封装的这个效果只能够适合包裹在最外层的全局组件，局部包括会影响子组件的样式，后期优化
+ * **/
+
 class Spin extends React.Component{
     static propTypes = {
         loading:PropTypes.bool,

@@ -42,13 +42,13 @@ class ArticleTitle extends PureComponent{
                     },()=>{
                         this.currentRef.current.style.opacity = 1;
                         this.currentRef.current.style.marginTop = 0;
-                        this.props.getLoadingInfo(false);
                     })
                     this.props.getWebTitle(res.data[0].title);
                     document.title = this.props.user.get("webTitle");
             }).then(()=>{
                 httpAjax.ajax(articleContent[pathname] + '?contentId=0').then(res=>{
                     this.props.getArticleContent(res.data.data);
+                    this.props.getLoadingInfo(false);
                     }).catch(err=>{
                         console.error(err);
                     })
@@ -58,28 +58,37 @@ class ArticleTitle extends PureComponent{
             })
       }
       
-      handleArticleTitle(currentIndex,title){
+      async handleArticleTitle(currentIndex,title){
           this.props.getLoadingInfo(true);//加载loading动画
           const {location:{pathname},articleContent} = this.props;
             document.title = title;
-            httpAjax.ajax(articleContent[pathname] + '?contentId='+currentIndex+'').then(res=>{
-                     this.props.getArticleContent(res.data.data);
-                     this.props.getLoadingInfo(false);//取消loading动画
-            }).catch(err=>{
+            try{
+                const res = await httpAjax.ajax(articleContent[pathname] + '?contentId='+currentIndex+'');
+                this.props.getArticleContent(res.data.data);
+                this.props.getLoadingInfo(false);//取消loading动画
+            }catch(err){
                 console.error(err);
-            })
+            }
+            // httpAjax.ajax(articleContent[pathname] + '?contentId='+currentIndex+'').then(res=>{
+            //          this.props.getArticleContent(res.data.data);
+            //          this.props.getLoadingInfo(false);//取消loading动画
+            // }).catch(err=>{
+            //     console.error(err);
+            // })
             this.setState({
                 currentTitle:currentIndex
             })
+            
       }
 
 
       render(){
           return (
               <>                
-                <div className={style['article-title']}>
-                    <h2>{this.props.user.get("articleTitle")}</h2>
-                </div>
+                    <div className={style['article-title']}>
+                        <h2>{this.props.user.get("articleTitle")}</h2>
+                    </div>
+              
                 <ul ref={this.currentRef} className={style['article-title-content']}>
                     {
                         this.state.navData.map((i,index)=><li

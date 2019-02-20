@@ -3,6 +3,7 @@ import style from './style.scss';
 import CopyRight from 'components/copyRight';
 import Spin from 'generalComponents/Spin';
 import {connect} from 'react-redux';
+import {$} from 'utils'
 
 @connect(state=>({user:state.get('user')}))
 class ArticleContent extends React.Component{
@@ -45,7 +46,7 @@ class ArticleContent extends React.Component{
         clearTimeout(method.tId);
         method.tId = setTimeout(()=>{
             method.call(context)
-        },500)
+        },100)
     }
 
     componentDidUpdate(){
@@ -74,7 +75,6 @@ class ArticleContent extends React.Component{
     }
 
     handleBackTop(){
-        debugger;
         const step = 7;
        this.timer = requestAnimationFrame(function fn(){
             if(this.scrollTop>0){
@@ -90,31 +90,29 @@ class ArticleContent extends React.Component{
     }
 
     handleShrinkWeb(){
-            const shrinkStyle = {width:0,transition:"all .3s ease-out"};
-            const navBox = document.getElementById('nav-box-div');
-            const titleBox = document.getElementById('title-box-div');
-            const navContentBox = document.getElementById('nav-content-box');
+        const shrinkStyle = {width:0,transition:"all .3s ease-out"};
         if(this.changeSize){
             this.shrinkBtn.current.style.transform = "rotateY(180deg)";
+            console.log($("#nav-box-div"));
             for(const key in shrinkStyle){
-                navBox.style[key] = shrinkStyle[key];
-                titleBox.style[key] = shrinkStyle[key];
+                $("#nav-box-div").style[key] = shrinkStyle[key];
+                $("#title-box-div").style[key] = shrinkStyle[key];
             }
             setTimeout(()=>{
-                navContentBox.style.display = 'none';
-                titleBox.style.display = 'none';
+                $("#nav-content-box").style.display = 'none';
+                $("#title-box-div").style.display = 'none';
                 this.contentBox.current.style.padding = "1.5em 10em 10em 10em";
             },100)
             this.changeSize = !this.changeSize;
         }else {
             this.shrinkBtn.current.style.transform = "rotateY(0deg)";
-            navBox.style.transition = "all .3s ease-in";
-            titleBox.style.transition = "all 1s ease-in";
-            navBox.style.width = "12em";
-            titleBox.style.width = "28em";
+            $("#nav-box-div").style.transition = "all .3s ease-in";
+            $("#title-box-div").style.transition = "all 1s ease-in";
+            $("#nav-box-div").style.width = "12em";
+            $("#title-box-div").style.width = "28em";
             setTimeout(()=>{
-                navContentBox.style.display = 'block';
-                titleBox.style.display = 'block';
+                $("#nav-content-box").style.display = 'block';
+                $("#title-box-div").style.display = 'block';
                 this.contentBox.current.style.padding = "1.5em";
             },200)
             this.changeSize = !this.changeSize;

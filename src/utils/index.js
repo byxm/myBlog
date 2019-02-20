@@ -15,3 +15,15 @@ export const proxyEvent = (e,proxyElem,fn) => {//事件代理,根据元素类型
                 fn.call(e.target,e);
         }
 }
+
+export const $ = (selector="") => {
+        const domMark = selector.split('');
+        const realSelector = selector.substr(1);
+        if (domMark[0] === "#") {
+               return document.getElementById(realSelector); 
+        }else if(domMark === "."){
+               return document.getElementsByClassName(realSelector);
+        }else {
+                return document.getElementsByTagName(selector);
+        }
+}

@@ -8,11 +8,6 @@ import style from './style.scss';
 import './reset.scss';
 import thunk from 'redux-thunk';
 
-// import MainNav from 'containers/navContainer/pcDesk';
-// import ArticleContent from 'components/articleContent/pcDesk';
-
-
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer,composeEnhancers(
         applyMiddleware(thunk)
@@ -27,31 +22,31 @@ const Router = process.env.NODE_ENV === "development" ? BrowserRouter : HashRout
 const PCLayout = () => {
     return <Provider store={store}>
             <Router>                
-                <div className={style['main-content-box']}>
-                    <div className={style['main-layout']}>
-                        <div id="nav-box-div" className={style['main-nav']}>
-                            <MainNav />
-                        </div>   
-                        <div id="title-box-div" className={style['main-title']}>  
-                            <Switch>
-                                    {
-                                        routerConfig.map(i => { 
-                                            return <Route key={i.pathUrl} 
-                                            path={i.pathUrl} 
-                                            component={i.component}
-                                            />
-                                        }
-                                    )
-                                }
-                                <Route exact path="/" render={()=><Redirect to="/compareTechology" />} />
-                                <Route component={NotFound} />
-                            </Switch>
+                    <div className={style['main-content-box']}>
+                        <div className={style['main-layout']}>
+                            <div id="nav-box-div" className={style['main-nav']}>
+                                    <MainNav />
+                            </div>   
+                            <div id="title-box-div" className={style['main-title']}>  
+                                <Switch>
+                                        {
+                                            routerConfig.map(i => { 
+                                                return <Route key={i.pathUrl} 
+                                                path={i.pathUrl} 
+                                                component={i.component}
+                                                />
+                                            }
+                                        )
+                                    }
+                                    <Route exact path="/" render={()=><Redirect to="/compareTechology" />} />
+                                    <Route component={NotFound} />
+                                </Switch>
+                            </div>
+                            <div className={style['main-content']}>
+                                    <ArticleContent/>
+                            </div>
                         </div>
-                        <div className={style['main-content']}>
-                                <ArticleContent/>
-                        </div>
-                    </div>
-                </div>                
+                    </div>                
             </Router>
  </Provider>
 }
