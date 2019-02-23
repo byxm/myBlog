@@ -85,21 +85,22 @@ class ArticleTitle extends PureComponent{
       render(){
           return (
               <>                
-                    <div className={style['article-title']}>
+                    <header className={style['article-title']}>
                         <h2>{this.props.user.get("articleTitle")}</h2>
-                    </div>
-              
-                <ul ref={this.currentRef} className={style['article-title-content']}>
-                    {
-                        this.state.navData.map((i,index)=><li
-                                key={i.contentIndex}
-                                className={style[`title-desc${index===this.state.currentTitle?"active":""}`]}
-                                onClick={()=>{this.handleArticleTitle(index,i.title)}}
-                            >
-                                <i className="iconfont">&#xe6cc;</i> <span>{i.title}</span>
-                        </li>)
-                    }
-                </ul>
+                    </header>
+              <nav ref={this.currentRef} className={style['article-title-content']}>
+                    <ul>
+                        {
+                            this.state.navData.map((i,index)=><li
+                                    key={i.contentIndex}
+                                    className={style[`title-desc${index===this.state.currentTitle?"active":""}`]}
+                                    onClick={()=>{this.handleArticleTitle(index,i.title)}}
+                                >
+                                    <i className="iconfont">&#xe6cc;</i> <span>{i.title}</span>
+                            </li>)
+                        }
+                    </ul>
+              </nav>
               </>
           )
       }

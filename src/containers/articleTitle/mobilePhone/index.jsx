@@ -65,7 +65,7 @@ class ArticleTitle extends PureComponent{
           const {match} = this.props;
           return (
               <>       
-                <div className={style['article-title']}>
+                <header className={style['article-title']}>
                     <h2>{this.props.user.get("articleTitle")}&nbsp;</h2>
                     <span 
                     onClick={this.handleSpreadMenu} 
@@ -73,24 +73,26 @@ class ArticleTitle extends PureComponent{
                     >
                         &#xe80a;
                     </span>
-                </div>
-                <ul ref={this.currentRef} className={style['article-title-content']}>
-                    {
-                        this.state.navData.map((i,index)=>
-                            <Link  key={i.contentIndex} 
-                            to={
-                            {pathname:'/content',search:`?currentMenu=${match.url}&currentIndex=${i.id}`,query: {currentMenu:match.url,currentIndex:i.id}}
-                            }>
-                                <li
-                                    className={style[`title-desc${index===this.state.currentTitle?"active":""}`]}
-                                    onClick={()=>{this.handleArticleTitle(index,i.title)}}
-                                >
-                                    <i className="iconfont">&#xe6cc;</i> <span>{i.title}</span>
-                                </li>
-                            </Link>
-                        )
-                    }
-                </ul>
+                </header>
+                <nav ref={this.currentRef} className={style['article-title-content']}>
+                    <ul>
+                        {
+                            this.state.navData.map((i,index)=>
+                                <Link  key={i.contentIndex} 
+                                to={
+                                {pathname:'/content',search:`?currentMenu=${match.url}&currentIndex=${i.id}`,query: {currentMenu:match.url,currentIndex:i.id}}
+                                }>
+                                    <li
+                                        className={style[`title-desc${index===this.state.currentTitle?"active":""}`]}
+                                        onClick={()=>{this.handleArticleTitle(index,i.title)}}
+                                    >
+                                        <i className="iconfont">&#xe6cc;</i> <span>{i.title}</span>
+                                    </li>
+                                </Link>
+                            )
+                        }
+                    </ul>
+                </nav>
               </>
           )
       }

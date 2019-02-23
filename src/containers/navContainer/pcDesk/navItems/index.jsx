@@ -60,22 +60,24 @@ class NavItems extends PureComponent{
             const {navList} = this.props;
             const {isActive} = this.state;
             return (
-                <ul className={style['nav-item-box']}>
-                    {
-                        navList.map((i) => <Link to={i.pathUrl}  key={i.label}>
-                                    <li 
-                                        className={style[`nav-item-list${isActive===i.pathUrl?"active":""}`]}
-                                        onClick={() => {this.handleClickItem(i.label,i.pathUrl)}}
-                                    >
-                                    <p className={style['nav-item-flex']}>
-                                        {i.icon}
-                                        <span>{i.label}</span> 
-                                    </p>
-                                </li>
-                        </Link>
-                        )
-                    }
-                </ul>
+                <nav>
+                    <ul className={style['nav-item-box']}>
+                        {
+                            navList.map((i) => <Link to={i.pathUrl}  key={i.label}>
+                                        <li 
+                                            className={style[`nav-item-list${isActive===i.pathUrl?"active":""}`]}
+                                            onClick={() => {this.handleClickItem(i.label,i.pathUrl)}}
+                                        >
+                                        <p className={style['nav-item-flex']}>
+                                            {i.icon}
+                                            <span>{i.label}</span> 
+                                        </p>
+                                    </li>
+                            </Link>
+                            )
+                        }
+                    </ul>
+                </nav>
             )
         }
 }
