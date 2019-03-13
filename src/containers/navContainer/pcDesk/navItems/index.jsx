@@ -4,8 +4,6 @@ import { Link,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {getArticleTitle}  from '../../../../redux/home.redux';
 
-// import Pover from 'generalComponents/popverLayer'
-
 @withRouter
 @connect(null,{getArticleTitle})
 class NavItems extends PureComponent{
@@ -64,15 +62,15 @@ class NavItems extends PureComponent{
                     <ul className={style['nav-item-box']}>
                         {
                             navList.map((i) => <Link to={i.pathUrl}  key={i.label}>
-                                        <li 
-                                            className={style[`nav-item-list${isActive===i.pathUrl?"active":""}`]}
-                                            onClick={() => {this.handleClickItem(i.label,i.pathUrl)}}
-                                        >
-                                        <p className={style['nav-item-flex']}>
-                                            {i.icon}
-                                            <span>{i.label}</span> 
-                                        </p>
-                                    </li>
+                                            <li 
+                                                className={style[`nav-item-list${isActive===i.pathUrl?"active":""}`]}
+                                                onClick={() => {this.handleClickItem(i.label,i.pathUrl)}}
+                                            >
+                                            <p className={style['nav-item-flex']}>
+                                                {i.icon}
+                                                <span>{i.label}</span> 
+                                            </p>
+                                        </li>
                             </Link>
                             )
                         }

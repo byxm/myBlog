@@ -3,7 +3,6 @@ import style from './style.scss';
 import { Link,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {getArticleTitle}  from '../../../../redux/home.redux'
-// import Pover from 'generalComponents/popverLayer'
 
 @connect(null,{getArticleTitle})
 @withRouter
@@ -46,24 +45,24 @@ class NavItems extends React.Component{
             const {navList} = this.props;
             const {isActive} = this.state;
             return (
-                <nav>
-                    <ul className={style['nav-item-box']}>
-                            {
-                                navList.map((i,index) => <Link to={i.pathUrl}  key={i.label}>
-                                            <li 
-                                                className={style[`nav-item-list${isActive===index?"active":isActive===i.pathUrl?"active":""}`]}
-                                                onClick={() => {this.handleClickItem(index,i.label)}}
-                                            >
-                                            <p className={style['nav-item-flex']}>
-                                                {i.icon}
-                                                <span>{i.label}</span> 
-                                            </p>
-                                        </li>
-                                </Link>
-                                )
-                            }
-                    </ul>
-                </nav>
+                    <nav>
+                        <ul className={style['nav-item-box']}>
+                                {
+                                    navList.map((i,index) => <Link to={i.pathUrl}  key={i.label}>
+                                                <li 
+                                                    className={style[`nav-item-list${isActive===index?"active":isActive===i.pathUrl?"active":""}`]}
+                                                    onClick={() => {this.handleClickItem(index,i.label)}}
+                                                >
+                                                <p className={style['nav-item-flex']}>
+                                                    {i.icon}
+                                                    <span>{i.label}</span> 
+                                                </p>
+                                            </li>
+                                    </Link>
+                                    )
+                                }
+                        </ul>
+                    </nav>
             )
         }
 }

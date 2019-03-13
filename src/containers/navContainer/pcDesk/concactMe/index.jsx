@@ -41,7 +41,7 @@ class ConcactMe extends React.Component{
                     }
                 ]
                 return (
-                    <div className={style['concact-me-box']}>
+                    <section className={style['concact-me-box']}>
                         {
                             concatMeList.map(i=>
                                 <div 
@@ -57,7 +57,7 @@ class ConcactMe extends React.Component{
                                 </div>
                             )
                         }
-                    </div>
+                    </section>
                 )
         }       
 }

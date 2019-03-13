@@ -106,10 +106,11 @@ module.exports = {
                 test:/\.(jpg|png|gif|bmp|svg)$/,
                 use:[
                     {
-                        loader:'file-loader',
+                        loader:'url-loader',
                         options:{
-                            limit:10000,
-                            name:'[path][name].[ext]'
+                            limit:2048,
+                            name:'[name]_[hash].[ext]',
+                            outputPath:'images/'
                         }
                     },
                     'image-webpack-loader' //压缩图片，暂不启用参数指定大小使用默认压缩算法
