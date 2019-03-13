@@ -21,8 +21,9 @@ const resolvePath = (pathLine) => path.resolve(__dirname,pathLine)
 
 module.exports = {
     entry:[       
-        path.resolve(__dirname,'../src/routes/index.js'),
         "@babel/polyfill",
+        "react-hot-loader/patch",
+        path.resolve(__dirname,'../src/routes/index.js'),
         path.resolve(__dirname,'../public/index.html')
     ],
     output:{
@@ -85,7 +86,7 @@ module.exports = {
                             sourceMap:isDev , 
                             modules:true,
                             importLoaders:20,
-                            localIdentName: isDev  ? "[path][name]__[local]--[hash:base64:5]" : ""
+                            localIdentName: isDev  ? "[name]__[local]--[hash:base64:5]" : ""
                         }
                     },
                     {
@@ -106,10 +107,10 @@ module.exports = {
                 test:/\.(jpg|png|gif|bmp|svg)$/,
                 use:[
                     {
-                        loader:'file-loader',
+                        loader:'url-loader',
                         options:{
-                            limit:10000,
-                            name:'[path][name].[ext]'
+                            name:'[path][name].[ext]?[hash]',
+                            limit:10240
                         }
                     },
                     'image-webpack-loader' //压缩图片，暂不启用参数指定大小使用默认压缩算法
@@ -117,10 +118,10 @@ module.exports = {
             },
             {
                 test:/\.(woff|woff2|eot|ttf|otf)$/,
-                loader:'file-loader',
+                loader:'url-loader',
                 options:{
-                    limit:10000,
-                    name:'[path][name].[ext]'
+                    name:'[path][name].[ext]?[hash]',
+                    limit:10240
                 }
             }
         ]

@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=development  webpack-dev-server --config ./build/webpack.dev.config.js --inline --process --colors",
+    "start": "cross-env NODE_ENV=development  webpack-dev-server --config ./build/webpack.dev.config.js --process --colors",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js --progress",
     "dll": "webpack --config ./build/webpack.dll.config.js --progress --colors"
   },
@@ -68,6 +68,7 @@
     "nprogress": "^0.2.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-hot-loader": "^4.8.0",
     "react-loadable": "^5.5.0",
     "react-redux": "^6.0.0",
     "react-responsive": "^6.0.1",
