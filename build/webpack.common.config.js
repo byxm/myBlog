@@ -109,8 +109,9 @@ module.exports = {
                     {
                         loader:'url-loader',
                         options:{
-                            name:'[path][name].[ext]?[hash]',
-                            limit:10240
+                            limit:2048,
+                            name:'[name]_[hash].[ext]',
+                            outputPath:'images/'
                         }
                     },
                     'image-webpack-loader' //压缩图片，暂不启用参数指定大小使用默认压缩算法

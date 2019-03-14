@@ -107,18 +107,18 @@ class ArticleContent extends React.Component{
         render(){
             const { user }  = this.props;
             return (
-                <div className={style['content-box']}>
-                    <div className={style['content-header-title']}>
+                <article className={style['content-box']}>
+                    <header className={style['content-header-title']}>
                             <span onClick={this.handleBackTitle} className={`iconfont ${style['arrow-left']}`}>&#xe606;</span>
                             <p className={style['title-word']}>{this.props.user.get("webTitle")}</p>
-                    </div>
-                    <div ref={this.contentBox} className={style['content-innner']}>
-                            <div className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
-                    </div>
+                    </header>
+                    <section ref={this.contentBox} className={style['content-innner']}>
+                            <article className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
+                    </article>
                         <CopyRight/>
-                    </div>
+                    </section>
                     <p onClick={this.handleBackTop} ref={this.backToBtn} className={`${style['back-top']} iconfont`}>&#xe71a;</p>
-                </div>
+                </article>
             )
         }
 }

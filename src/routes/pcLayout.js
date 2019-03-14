@@ -22,31 +22,29 @@ const Router = process.env.NODE_ENV === "development" ? BrowserRouter : HashRout
 const PCLayout = () => {
     return <Provider store={store}>
             <Router>                
-                    <div className={style['main-content-box']}>
-                        <div className={style['main-layout']}>
-                            <div id="nav-box-div" className={style['main-nav']}>
-                                    <MainNav />
-                            </div>   
-                            <div id="title-box-div" className={style['main-title']}>  
-                                <Switch>
-                                        {
-                                            routerConfig.map(i => { 
-                                                return <Route key={i.pathUrl} 
-                                                path={i.pathUrl} 
-                                                component={i.component}
-                                                />
-                                            }
-                                        )
+                <article className={style['main-layout']}>
+                    <section id="nav-box-div" className={style['main-nav']}>
+                            <MainNav />
+                    </section>   
+                    <section id="title-box-div" className={style['main-title']}>  
+                        <Switch>
+                                {
+                                    routerConfig.map(i => { 
+                                        return <Route key={i.pathUrl} 
+                                        path={i.pathUrl} 
+                                        component={i.component}
+                                        />
                                     }
-                                    <Route exact path="/" render={()=><Redirect to="/compareTechology" />} />
-                                    <Route component={NotFound} />
-                                </Switch>
-                            </div>
-                            <div className={style['main-content']}>
-                                    <ArticleContent/>
-                            </div>
-                        </div>
-                    </div>                
+                                )
+                            }
+                            <Route exact path="/" render={()=><Redirect to="/compareTechology" />} />
+                            <Route component={NotFound} />
+                        </Switch>
+                    </section>
+                    <section className={style['main-content']}>
+                            <ArticleContent/>
+                    </section>
+                </article>
             </Router>
  </Provider>
 }

@@ -124,14 +124,16 @@ class ArticleContent extends React.Component{
             const {user} = this.props;
             return  (
                 <Spin loading={user.get('isLoading')} tip="博客内容获取中...">
-                    <div ref={this.contentBox}  className={style['article-box']}>
-                        <h2 className={style['article-title']}>{user.get('articleContent')?user.get('articleContent').articleTitle:""}</h2>
-                        <div className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
-                        </div>
+                    <article ref={this.contentBox}  className={style['article-box']}>
+                        <header>
+                            <h2 className={style['article-title']}>{user.get('articleContent')?user.get('articleContent').articleTitle:""}</h2>
+                        </header>
+                        <section className={style['article-content']} dangerouslySetInnerHTML={{__html:user.get('articleContent')?user.get('articleContent').articleContent:""}}>                    
+                        </section>
                         <CopyRight/>
                         <p onClick={this.handleBackTop} ref={this.backToBtn} className={`${style['back-top']} iconfont`}>&#xe71a;</p>
                         <p ref={this.shrinkBtn} onClick={this.handleShrinkWeb} className={`${style['shrink-web-btn']} iconfont`}>&#xe61f;</p>
-                        </div>
+                        </article>
                     </Spin>
 
             )           

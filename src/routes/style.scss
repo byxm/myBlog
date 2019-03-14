@@ -1,5 +1,4 @@
 $layout-min-height:100vh;
-.main-content-box{
 .main-layout{
     display: flex;
     flex-direction: row;
@@ -23,7 +22,6 @@ $layout-min-height:100vh;
         height: $layout-min-height;
         background-color: #fff;
     }
-}
 }
 
 @font-face {

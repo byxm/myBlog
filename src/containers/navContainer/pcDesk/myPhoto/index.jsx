@@ -29,9 +29,9 @@ class MyPhoto extends React.Component{
 
     render(){
         return (
-                <div ref={this.myPhoto} onClick={this.handleToMyHome} className={style['nav-content-logo']}>
+                <section ref={this.myPhoto} onClick={this.handleToMyHome} className={style['nav-content-logo']}>
                     <img src={panyu} alt="紫英头像"/>
-                </div>
+                </section>
         )
     }
 }
