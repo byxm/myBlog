@@ -5,7 +5,8 @@ const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const webpackConfigProd = {
-            devtool:'none',
+            devtool:'cheap-module-source-map',
+            // devtool:'none',
             mode:'production',
             plugins:[
                 new CleanWebpackPlugin(['dist'],{

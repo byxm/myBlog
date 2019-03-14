@@ -22,7 +22,6 @@ const resolvePath = (pathLine) => path.resolve(__dirname,pathLine)
 module.exports = {
     entry:[       
         "@babel/polyfill",
-        "react-hot-loader/patch",
         path.resolve(__dirname,'../src/routes/index.js'),
         path.resolve(__dirname,'../public/index.html')
     ],
@@ -182,7 +181,8 @@ module.exports = {
         }
         }
         },
-        runtimeChunk: true
+        runtimeChunk: true,
+        usedExports:true
   },
 
     plugins:[
