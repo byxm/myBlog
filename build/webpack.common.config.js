@@ -27,8 +27,8 @@ module.exports = {
     ],
     output:{
         path:path.resolve(__dirname,'../dist'),
-        chunkFilename:isDev  ? '[name].[hash].js' : '[name].js',
-        filename:isDev  ? '[name].[hash].js' : '[name].js',
+        chunkFilename:isDev  ? '[name].js' : '[name].[contenthash].chunk.js',//contenthash用来解决上线代码缓存问题
+        filename:isDev  ? '[name].js' : '[name].[contenthash].js',
         publicPath:isDev?"/":"./",
     },
     resolve:{
@@ -132,8 +132,7 @@ module.exports = {
      // 优化css
       new OptimizeCssAssetsPlugin({
         cssProcessorOptions: {
-          parser: SafeParser,
-          map: {inline: false, annotation: true},
+          parser: SafeParser
         }
       }),
  
@@ -180,11 +179,13 @@ module.exports = {
                 }
             }
         },
-        runtimeChunk: true,
+        runtimeChunk: {
+            name:'runtime' //把业务代码和公共依赖代码里面的mainifest依赖关系单独进行抽离开来
+        },
         usedExports:true
   },
-
-    plugins:[
+  performance:false,
+  plugins:[
         new webpack.DefinePlugin({
             'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV)//设置生产环境的环境变量NODE_ENV
         }),

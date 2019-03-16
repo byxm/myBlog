@@ -69,12 +69,6 @@ class ArticleTitle extends PureComponent{
             }catch(err){
                 console.error(err);
             }
-            // httpAjax.ajax(articleContent[pathname] + '?contentId='+currentIndex+'').then(res=>{
-            //          this.props.getArticleContent(res.data.data);
-            //          this.props.getLoadingInfo(false);//取消loading动画
-            // }).catch(err=>{
-            //     console.error(err);
-            // })
             this.setState({
                 currentTitle:currentIndex
             })
