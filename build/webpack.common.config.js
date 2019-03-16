@@ -171,15 +171,14 @@ module.exports = {
         mergeDuplicateChunks: true,
         moduleIds: "hashed",
         splitChunks: {
-        chunks: "async",
-        name: true,
-        cacheGroups: {
-        vendor: {
-            test:/[\\/]node_modules[\\/]/,
-            name: "vendors",
-            chunks:"all"
-        }
-        }
+            chunks: "all",
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test:/[\\/]node_modules[\\/]/,
+                    name: "vendors"
+                }
+            }
         },
         runtimeChunk: true,
         usedExports:true

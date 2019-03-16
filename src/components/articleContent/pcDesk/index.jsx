@@ -93,7 +93,6 @@ class ArticleContent extends React.Component{
         const shrinkStyle = {width:0,transition:"all .3s ease-out"};
         if(this.changeSize){
             this.shrinkBtn.current.style.transform = "rotateY(180deg)";
-            console.log($("#nav-box-div"));
             for(const key in shrinkStyle){
                 $("#nav-box-div").style[key] = shrinkStyle[key];
                 $("#title-box-div").style[key] = shrinkStyle[key];

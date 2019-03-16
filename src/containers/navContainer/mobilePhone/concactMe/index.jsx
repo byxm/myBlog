@@ -1,5 +1,4 @@
 import React from 'react';
-import {Message} from 'generalComponents';
 import style from './style.scss';
 
 
@@ -7,11 +6,14 @@ class ConcactMe extends React.Component{
 
          handleToMyConcact(page,isNewPage="_blank"){
             if (isNewPage === '_self') {
-                Message.warning({
-                    title:"访问提示",
-                    content:`将要访问您的手机邮箱,我的邮箱：panyuximeng@163.com`,
-                    onOk:()=>{window.open(page,isNewPage)},
-                    onCancel:()=>{}
+                //异步动态加载Message框，提示性能
+                import(/* webpackPrefetch:true */ 'generalComponents').then(mod=>{
+                    mod.Message.warning({
+                        title:"访问提示",
+                        content:`将要访问您的手机邮箱,我的邮箱：panyuximeng@163.com`,
+                        onOk:()=>{window.open(page,isNewPage)},
+                        onCancel:()=>{}
+                    })
                 })
             }else {
                 window.open(page,isNewPage)

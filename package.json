@@ -2,13 +2,13 @@
   "name": "myblog",
   "version": "1.0.0",
   "description": "",
-  "sideEffects":["*.scss"],
+  "sideEffects":["*.scss","*.css"],
   "private": true,
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development  webpack-dev-server --config ./build/webpack.dev.config.js --process --colors",
-    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js --progress",
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js --progress --profile --json > stats.json",
     "dll": "webpack --config ./build/webpack.dll.config.js --progress --colors"
   },
   "author": "Simone",
