@@ -5,7 +5,7 @@ import { createStore,applyMiddleware,compose } from 'redux';
 import reducer from '../redux';
 import routerConfig,{lazyLoad} from '../lazyLoad'
 import style from './style.scss';
-import './reset.scss';
+import './reset.css';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -10,7 +10,7 @@
               },
             "useBuiltIns": "usage"
         }],
-        "@babel/preset-react"
+        "@babel/preset-react" 
     ], 
     "plugins": [
         "@babel/plugin-transform-runtime",
