@@ -5,8 +5,9 @@ const webpack = require('webpack');
 const TerserPlugin = require("terser-webpack-plugin");
 const SafeParser = require("postcss-safe-parser");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const AddAssetWebpackPlugin = require('add-asset-html-webpack-plugin');
 // const manifest = require('../static/vendor-mainfest.json');
-const bundleConfig = require("../bundle-config.json")
+// const bundleConfig = require("../bundle-config.json")
 
 // const evn = process.argv.pop();//获取当前环境，生产或开发
 const isDev = process.env.NODE_ENV !== 'production';
@@ -23,7 +24,6 @@ module.exports = {
     entry:[       
         "@babel/polyfill",
         path.resolve(__dirname,'../src/routes/index.js'),
-        path.resolve(__dirname,'../public/index.html')
     ],
     output:{
         path:path.resolve(__dirname,'../dist'),
@@ -32,7 +32,7 @@ module.exports = {
         publicPath:isDev?"/":"./",
     },
     resolve:{
-        extensions:['.js','.jsx','.css','.json'],
+        extensions:['.js','.jsx'],
         alias:{
             components:resolvePath('../src/components'),
             containers:resolvePath('../src/containers'),
@@ -58,25 +58,15 @@ module.exports = {
                     },
                     {
                         loader:'eslint-loader',
+                        options:{
+                            fix:true
+                        }
                     }
                 ]
             },
             {
-                test:/\.html$/,
-                exclude:/node_modules/,
-                include:path.resolve(__dirname,'../public'),
-                use:{
-                    loader:'html-loader',
-                    options:{
-                        minimize:isDev ,
-                        sourceMap:isDev 
-                    }
-                }
-            },
-            {
                 test:/\.(css|scss|sass)$/,
                 exclude:/node_modules/,
-                include:path.resolve(__dirname,'../src'),
                 use:[
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,//开发环境用style-loader热加载，生产环境单独抽离CSS文件
                     {
@@ -101,6 +91,11 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test:/\.css$/,
+                include:/node_modules/,
+                use:['style-loader','css-loader']
             },
             {
                 test:/\.(jpg|png|gif|bmp|svg)$/,
@@ -195,19 +190,20 @@ module.exports = {
         }),
         new webpack.SourceMapDevToolPlugin({
             filename:'[name].js.map',
-            exclude:['vendor.js']
-        }),
-        new webpack.DllReferencePlugin({//关联dll生成的vendor-manifest.json 
-            context:path.join(__dirname,'static'),
-            manifest:require('../static/vendor-mainfest.json')
+            exclude:['vendorLib.dll.js']
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject:true,
             template: path.resolve(__dirname,'../public/index.html'),
             favicon:path.resolve(__dirname,'../public/ziyin.ico'),
-            vendorJsName: bundleConfig.vendor.js,
-          })
+        }),
+        new webpack.DllReferencePlugin({//关联dll生成的vendor-manifest.json 
+            manifest:require('../static/vendorLib-mainfest.json')
+        }),
+        new AddAssetWebpackPlugin({
+            filepath:path.resolve(__dirname,'../static','vendorLib.dll.js')
+        })
         
     ]
 }

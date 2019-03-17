@@ -6,6 +6,7 @@ import reducer from '../redux';
 import routerConfig,{lazyLoad} from '../lazyLoad'
 import style from './style.scss';
 import './reset.css';
+import '../../node_modules/nprogress/nprogress.css';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

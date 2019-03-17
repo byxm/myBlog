@@ -7,6 +7,7 @@ import { cancelMaskerLayer } from 'utils';
 import routerConfig,{lazyLoad} from '../lazyLoad/mobile'
 import styleMobile from './styleMobile.scss';
 import './reset.css';
+import '../../node_modules/nprogress/nprogress.css';
 import thunk from 'redux-thunk';
 
 import MainNav from 'containers/navContainer/mobilePhone'

@@ -10,8 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development  webpack-dev-server --config ./build/webpack.dev.config.js --process --colors",
-    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js --progress --profile --json > stats.json",
-    "dll": "webpack --config ./build/webpack.dll.config.js --progress --colors"
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js --progress",
+    "build:dll": "webpack --config ./build/webpack.dll.config.js --progress --colors"
   },
   "author": "Simone",
   "license": "ISC",
@@ -26,6 +26,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.2.0",
     "add": "^2.0.6",
+    "add-asset-html-webpack-plugin": "^3.1.3",
     "assets-webpack-plugin": "^3.9.7",
     "astroturf": "^0.8.1",
     "autoprefixer": "^9.4.3",
@@ -72,7 +73,6 @@
     "nprogress": "^0.2.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-hot-loader": "^4.8.0",
     "react-loadable": "^5.5.0",
     "react-redux": "^6.0.0",
     "react-responsive": "^6.0.1",
