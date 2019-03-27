@@ -27,7 +27,7 @@ module.exports={
         "react/jsx-uses-react":2,
         "react/jsx-uses-vars":2,                        //不能出现未使用的var定的组件
         "react/react-in-jsx-scope":2,
-        "react/button-has-type": ["error", {            //button元素type类型指定
+        "react/button-has-type": ["warn", {            //button元素type类型指定
             "button": true,
             "submit": true,
             "reset": true

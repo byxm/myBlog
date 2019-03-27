@@ -20,6 +20,7 @@ export const lazyLoad = (loaderComponents) => {
 }
 
 const ArticleTitle = lazyLoad(()=>import("containers/articleTitle/pcDesk"));
+const Test = lazyLoad(()=>import("../test"))
 
 const routerConfig = [
     {
@@ -41,6 +42,10 @@ const routerConfig = [
     {
         pathUrl:'/aboutMe',
         component:ArticleTitle
+    },
+    {
+        pathUrl:'/test',
+        component:Test
     }
 ]
 

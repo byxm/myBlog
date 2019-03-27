@@ -29,4 +29,12 @@ if (module.hot) {
                 render(PCLayout,MobileLayout);
         })
 }
-
+if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {//注册离线缓存，生产环境
+        window.addEventListener('load',()=>{
+                navigator.serviceWorker.register('./service-worker.js').then(registration=>{
+                        console.log('service-worker registed',registration);
+                }).catch(err=>{
+                        console.error(err);
+                })
+        })
+}

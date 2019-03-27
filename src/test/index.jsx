@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 
 
-class Test extends React.Component{
-
-
-        render(){
-            return (
-                <h1>404</h1>
-            )
-        }
-}
+function Test(){
+    const [isOnline,setIsOnline] = useState(null);
+    function handleStatusChange(status){
+        setIsOnline(status.isOnline);
+    }
+    useEffect(()=>{
+        // ChatAPI.subscribeToFriendStauts()
+    })
+} 
 
 export default Test;
