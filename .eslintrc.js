@@ -34,7 +34,7 @@ module.exports={
           }],
         "react/destructuring-assignment": ["off", "always"],     //组件属性获取使用解构赋值
         "react/forbid-component-props": ["warn", { "forbid": ["className"] }],  //禁止自定义组件使用JSX的默认属性
-        "react/no-access-state-in-setstate":2,            //禁止在setState函数中使用this.state
+        "react/no-access-state-in-setstate":0,            //禁止在setState函数中使用this.state
         "react/no-array-index-key":2,                     //禁止迭代生成的虚拟DOM中使用index作为key
         "react/no-direct-mutation-state":2,               //禁止直接更改this.state,除了在ES6构造函数中可以直接使用  
         "react/no-find-dom-node":2,                       //禁止使用findDOMNode查找DOM元素节点  

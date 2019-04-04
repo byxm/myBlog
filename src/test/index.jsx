@@ -1,14 +1,33 @@
-import React, {useState,useEffect} from 'react';
+import React,{Component} from 'react';
+import FormCreate from './HOC';
 
 
-function Test(){
-    const [isOnline,setIsOnline] = useState(null);
-    function handleStatusChange(status){
-        setIsOnline(status.isOnline);
-    }
-    useEffect(()=>{
-        // ChatAPI.subscribeToFriendStauts()
-    })
-} 
 
-export default Test;
+@FormCreate
+class Login extends Component {
+  render() {
+    return (
+      <div>
+        <div>
+          <label id="username">
+            账户
+          </label>
+          <input name="username" />
+        </div>
+        <div>
+          <label id="password">
+            密码
+          </label>
+          <input name="password" />
+        </div>
+        <div>提交</div>
+        <div>other content</div>
+      </div>
+    )
+  }
+}
+
+export default Login;
+
+
+
