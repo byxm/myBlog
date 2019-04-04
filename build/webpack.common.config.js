@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const TerserPlugin = require("terser-webpack-plugin");
 const SafeParser = require("postcss-safe-parser");
@@ -55,12 +56,6 @@ module.exports = {
                             cacheDirectory:isDev ,
                             sourceMap:isDev
                         },
-                    },
-                    {
-                        loader:'eslint-loader',
-                        options:{
-                            fix:true
-                        }
                     }
                 ]
             },
@@ -156,7 +151,15 @@ module.exports = {
           cache: true,
           sourceMap: isDev
         }
-      })
+      }),
+      new UglifyjsPlugin({
+        test:  /\.js($|\?)/i,
+        exclude: /node_modules/,
+        cache: true,
+        uglifyOptions: {
+            ie8: true
+        }
+    }),
     ],
         namedModules: true,
         namedChunks: true,

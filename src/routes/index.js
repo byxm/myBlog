@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import MediaQuery from 'react-responsive';
 import PCLayout from './pcLayout';
 import MobileLayout from './mobileLayout';
+// import 'core-js';
 
 
 const render = (Pc,Mobile) => {

@@ -24,8 +24,20 @@ module.exports = merge(common,{
         historyApiFallback: true,        //调用浏览器HTML5api，解析不了的需要定向到public下的index.html
         // noInfo:true
     },
+    module:{
+        rules:[
+            {
+                test:/\.js$/,
+                loader:'eslint-loader',
+                options:{
+                    fix:true
+                }
+            }
+        ]
+    },
     plugins:[
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        
     ]
 })
